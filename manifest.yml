@@ -1,0 +1,5 @@
+---
+applications:
+ - name: FF-frontend-service
+   random-route: true
+   memory: 128M
