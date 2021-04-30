@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-
-
+const routes = require("./routes")
+app.use(routes)
 // load local VCAP configuration  and service credentials
 var vcapLocal;
 try {
@@ -38,28 +38,6 @@ app.listen(port, function() {
 
 
 
-//GeoData  for Species call
-app.get('/quokkaData', (req, res) =>{
-  //localhost 4000
-  request('https://species-map-service.us-south.cf.appdomain.cloud/quokka', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log(body) // Print the google web page.
-      res.send(body)
-    }
-  })
 
-})
-
-
-//IBM discovery FaaS call
-app.get('/quokkaNews', (req, res) =>{
-  request("https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/hello-world/helloworld.json", function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log(body) // Print the google web page.
-      res.send(body)
-    }
-  })
-
-})
 
 
