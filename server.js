@@ -4,14 +4,21 @@ var cfenv = require("cfenv");
 var bodyParser = require('body-parser')
 const request = require('request');
 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 
+//get routes
 const routes = require("./routes")
 app.use(routes)
+
+
+
+
+
 // load local VCAP configuration  and service credentials
 var vcapLocal;
 try {
