@@ -1,14 +1,17 @@
 var express = require("express");
 var app = express();
 var cfenv = require("cfenv");
-var bodyParser = require('body-parser')
+//var bodyParser = require('body-parser')
 const request = require('request');
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(express.json())
+
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
+
+
 
 
 
@@ -61,5 +64,11 @@ app.get('/quokkaNews', (req, res) =>{
   })
 
 })
+
+
+//route the donate.html
+app.get('/donate',
+  (req, res) => res.sendFile('/views/donate.html', { root: __dirname})
+  );
 
 
