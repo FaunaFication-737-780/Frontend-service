@@ -72,3 +72,12 @@ app.get('/donate',
   );
 
 
+//route the success.html
+app.get('/donate',
+  (req, res) => res.sendFile('/views/success.html', { root: __dirname})
+  );
+
+  //route the cancelled.html
+app.get('/donate',
+(req, res) => res.sendFile('/views/cancelled.html', { root: __dirname})
+);
