@@ -1,16 +1,18 @@
-import { io } from "socket.io-client";
+//started the socket io
+const socketIo = (io) => {
+    //while a user connected 
+    
+    io.on('connection', (socket) => {
 
-const URL = "http://localhost:3000";
-const socket = io(URL, { autoConnect: false });
+        console.log('a user connected');
 
-socket.onAny((event, ...args) => {
-    console.log(event, args);
-});
+        //while user disconnected 
+        socket.on('disconnect', () => {
+            console.log('user disconnected');
+        })
+        socket.emit('test','testing socket')
+    })
+}
 
 
-io.on("connection", (socket) => {
-    // notify existing users
-    console.log("user connected");
-});
-
-module.exports = socket;
+module.exports ={openSocket: socketIo} ;

@@ -125,8 +125,14 @@
 
 
   <script src="/socket.io/socket.io.js"></script>
-  <script>const io = require("socket.io-client")
-  const socket = io();</script>
+  <script>
+  
+  const socket = io()
+    socket.on('test',(msg) =>{
+      console.log('test: '+msg);
+    })
+  
+  </script>
 
 
 
