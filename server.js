@@ -4,7 +4,14 @@ var cfenv = require("cfenv");
 var bodyParser = require('body-parser')
 const request = require('request');
 const mongoose = require("mongoose")
-const io = require('socket.io')//(3100)
+const httpServer = require("http").createServer();
+const io = require("socket.io")(httpServer, {
+    cors: {
+        origin: "http://localhost:8080",
+    },
+});
+
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -25,6 +32,9 @@ db.once('open', function() {
     console.log("database connected")
 
 });
+
+
+
 
 
 
