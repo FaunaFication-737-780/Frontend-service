@@ -1,17 +1,48 @@
+const getData = () => {
+    var geoData;
+    $.get('/mapData', {
+        name: 'quokka'
+    }, function (data) {
+        console.log(data);
+        geoData = data.data
+        var map = new L.map('mapid').setView([-27.833, 133.583], 4);
+        var boundaryBox = data.data.features[0].geometry.bbox
+        console.log('bbox is ' + boundaryBox);
+        var fixedBox = [] 
+
+
+        boundaryBox.forEach(element => {
+            console.log('box' + element);
+            
+        });
+        fixedBox = [[boundaryBox[1],boundaryBox[0]],[boundaryBox[3], boundaryBox[2]]]
+        console.log('fixed box'+typeof fixedBox);
+
+       
+        
+
+        L.tileLayer(
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1
+            }).addTo(map);
+
+        L.geoJson(geoData).addTo(map)
+          map.fitBounds(fixedBox)
+    })
+
+
+}
+
+
 $(document).ready(() => {
     console.log('DOM is loaded')
-    //initialize leaflet
-    var mymap = L.map('mapid').setView([-27.833, 133.583], 4);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoiYnJ5Y2V3aWxraW5zb240MyIsImEiOiJja245bnRqYzcwejN1MnNvMG0zczI0YzVhIn0.bspf_6DxvHvi4pm0eOOKkA'
-    }).addTo(mymap);
-
-
+    
+    getData()
 //API Fetch and Set
     let myJson
     const userAction = async () => {
@@ -37,34 +68,12 @@ $(document).ready(() => {
             return result;
         }
 
-        //Some problem with passing nested array and cannot call JSON.parse()
-        /*
-        myJson.geoData.forEach(element=> {COORDS.push(json2array(myJson.geoData))})
-        console.log(COORDS)
-        */
-        /*
-        polygon =L.polygon(COORDS,{color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5}).addTo(mymap)
-        polygon.bindPopup("Drastically decreased, decimated by stray cats");
-        */
-        //
+      
 
     }
     userAction()
 
-//SET POLYGON
-//doing manually since DB data is abit messy
-    polygon = L.polygon([[-31.82066202602414, 115.76475456437339], [-34.784389644249266, 116.10364812331744], [-33.715487257392525, 115.05364100657803]], {color: 'red'}).addTo(mymap)
-    polygon.bindPopup("The mainland population has been devasted by stray cats with the population scattered across the coast of Western Australia in small groups *usually 50 or less in a tribe")
-//manual for rotnest island add to db
-    circle = L.circle([-32.00522031995993, 115.5181870410761], {
-        color: 'blue',
-        fillColor: '#7fff00',
-        fillOpacity: 0.5,
-        radius: 6500
-    }).addTo(mymap)
-    circle.bindPopup("No Natural threats, very popular tourist location, stable population");
+
 
 
 //CALL FAAS FOR DISCOVERY API DATA
@@ -80,14 +89,5 @@ $(document).ready(() => {
     sentimentAction()
 
 
-//var marker = L.marker([-27.833, 150.01]).addTo(mymap);
-    /*var circle = L.circle([-27.833, 152.55], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
-    }).addTo(mymap);
-
-     */
 
 })

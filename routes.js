@@ -15,7 +15,7 @@ router.use(morgan('tiny'));
 morgan.token('host', function(req, res) {
     return req.hostname;
 });
-
+const geoDataInfoUrl = 'http://localhost:3001/find/name?name='
 
 //GeoData  for Species call
 router.get('/quokkaData', (req, res) =>{
@@ -41,7 +41,21 @@ router.get('/quokkaNews', (req, res) =>{
 
 })
 
-
+router.get('/mapData', (req, res) => {
+    let name = encodeURI(req.query.name)
+    let url = geoDataInfoUrl + name
+    request(url, function (error, result, body) {
+      if (error != null) {
+        res.send(error)
+      } else {
+        let jsonResult = JSON.parse(body)
+        
+        res.json(jsonResult)
+      }
+  
+    })
+  
+  })
 
 
 
