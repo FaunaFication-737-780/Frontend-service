@@ -42,6 +42,21 @@ router.get('/quokkaNews', (req, res) =>{
 })
 
 
+//route the donate.html
+router.get('/donate',
+  (req, res) => res.sendFile('/views/donate.html', { root: __dirname})
+  );
+
+
+//route the success.html
+router.get('/donate',
+  (req, res) => res.sendFile('/views/success.html', { root: __dirname})
+  );
+
+  //route the cancelled.html
+router.get('/donate',
+(req, res) => res.sendFile('/views/cancelled.html', { root: __dirname})
+);
 
 
 

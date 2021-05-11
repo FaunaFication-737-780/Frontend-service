@@ -7,10 +7,10 @@ const mongoose = require("mongoose")
 const io = require('socket.io')//(3100)
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(express.json())
 
 //get routes
 const routes = require("./routes")
