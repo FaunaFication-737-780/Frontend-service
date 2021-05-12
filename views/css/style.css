@@ -57,3 +57,53 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+
+
+
+.rTable {
+  display: table;
+  width: 90%;
+}
+.rTableRow {
+  display: table-row;
+}
+.rTableHeading {
+  display: table-header-group;
+  background-color:#4db6ac;
+}
+.rTableCell, .rTableHead {
+  display: table-cell;
+  padding: 3px 10px;
+  border: 1px solid #4db6ac;
+  font: normal 70% arial;
+}
+.rTableCell2, .rTableHead2 {
+  display: table-cell;
+  border-radius: 10px 10px 10px 10px;
+  padding: 3px 10px;
+  border: 1px solid #4db6ac;
+  font: normal 70% arial;
+}
+
+.rTableHeading {
+  display: table-header-group;
+  background-color: #4db6ac;
+  font-weight: bold;
+}
+.rTableBody {
+  display: table-row-group;
+}
+
+.pbody {
+  padding: 1px 5px;
+}
+
+.button-style{
+  background-color:#4db6ac;
+  color:#FFF;
+  padding:8px 12px;
+  border:0;
+  border-radius:4px;
+  font-size:2em"
+}
