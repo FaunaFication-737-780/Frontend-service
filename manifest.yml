@@ -1,5 +1,5 @@
 ---
 applications:
- - name: FaunaFication Frontend
+ - name: faunafication-frontend
    random-route: true
    memory: 128M
