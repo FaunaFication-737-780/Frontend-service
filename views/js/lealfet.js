@@ -1,26 +1,33 @@
 const getData = () => {
     var geoData;
     $.get('/mapData', {
+        //only for showing an example
+
         name: 'quokka'
     }, function (data) {
         console.log(data);
         geoData = data.data
+        //set up the map
         var map = new L.map('mapid').setView([-27.833, 133.583], 4);
+        // create boundary box
         var boundaryBox = data.data.features[0].geometry.bbox
         console.log('bbox is ' + boundaryBox);
-        var fixedBox = [] 
+        var fixedBox = []
 
 
         boundaryBox.forEach(element => {
             console.log('box' + element);
-            
+
         });
-        fixedBox = [[boundaryBox[1],boundaryBox[0]],[boundaryBox[3], boundaryBox[2]]]
-        console.log('fixed box'+typeof fixedBox);
+        fixedBox = [
+            [boundaryBox[1], boundaryBox[0]],
+            [boundaryBox[3], boundaryBox[2]]
+        ]
+        console.log('fixed box' + typeof fixedBox);
 
-       
-        
 
+
+        //create the map
         L.tileLayer(
             'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 18,
@@ -30,9 +37,10 @@ const getData = () => {
                 tileSize: 512,
                 zoomOffset: -1
             }).addTo(map);
-
+        //add geojson file
         L.geoJson(geoData).addTo(map)
-          map.fitBounds(fixedBox)
+        //fit the boundary 
+        map.fitBounds(fixedBox)
     })
 
 
@@ -41,9 +49,9 @@ const getData = () => {
 
 $(document).ready(() => {
     console.log('DOM is loaded')
-    
+
     getData()
-//API Fetch and Set
+    //API Fetch and Set
     let myJson
     const userAction = async () => {
         const response = await fetch('/quokkaData');
@@ -68,7 +76,7 @@ $(document).ready(() => {
             return result;
         }
 
-      
+
 
     }
     userAction()
@@ -76,7 +84,7 @@ $(document).ready(() => {
 
 
 
-//CALL FAAS FOR DISCOVERY API DATA
+    //CALL FAAS FOR DISCOVERY API DATA
     let newsJson //using FaaS to imitate data from Watson Discovery as documentation is unclear
     const sentimentAction = async () => {
         const response = await fetch('/quokkaNews');

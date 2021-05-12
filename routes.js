@@ -15,7 +15,13 @@ router.use(morgan('tiny'));
 morgan.token('host', function(req, res) {
     return req.hostname;
 });
+
+/**
+ * I am not be able to access ibm cloud via localhost
+ * but you can use ibm cloud url if you are not in china
+ */
 const geoDataInfoUrl = 'http://localhost:3001/find/name?name='
+//const geoDataInfoUrl = 'https://geodata-api.us-south.cf.appdomain.cloud/find/name?name='
 
 //GeoData  for Species call
 router.get('/quokkaData', (req, res) =>{
@@ -40,6 +46,11 @@ router.get('/quokkaNews', (req, res) =>{
     })
 
 })
+
+/**
+ * now is only for using common name
+ * will support binomial later
+*/
 
 router.get('/mapData', (req, res) => {
     let name = encodeURI(req.query.name)
