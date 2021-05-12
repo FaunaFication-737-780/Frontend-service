@@ -28,14 +28,15 @@
     "mongodb": "^3.6.4",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
-    "watson-developer-cloud": "^4.0.1"
+    "watson-developer-cloud": "^4.0.1",
+    "request": "^2.88.2",
+    "socket.io": "^4.0.1",
+    "socket.io-client": "^4.0.2"
+
   },
   "author": "IBM Corp",
   "license": "Apache-2.0",
   "devDependencies": {
-    "ibm-watson": "^6.0.4",
-    "request": "^2.88.2",
-    "socket.io": "^4.0.1",
-    "socket.io-client": "^4.0.2"
+    "ibm-watson": "^6.0.4"
   }
 }
