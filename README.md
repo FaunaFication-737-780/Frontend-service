@@ -1,21 +1,31 @@
-# Node.js getting started application
-The Getting Started tutorial for Node.js uses this sample application to provide you with a sample workflow for working with any Node.js app on IBM Cloud or in IBM Cloud Private; you set up a development environment, deploy an app locally and on the cloud, and then integrate a IBM Cloud database service in your app.
-
-The Node.js app uses [Express Framework](https://expressjs.com) and [Cloudant noSQL DB service](https://console.bluemix.net/catalog/services/cloudant-nosql-db) or the [MongoDB Service](http://mongodb.github.io/node-mongodb-native/) to add information to a database and then return information from a database to the UI. To learn more about how the app connects to Cloudant, see the [Cloudant library for Node.js](https://www.npmjs.com/package/cloudant).
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/IBM-Cloud/get-started-java/master/docs/GettingStarted.gif" width="300" alt="Gif of the sample app contains a title that says, Welcome, a prompt asking the user to enter their name, and a list of the database contents which are the names Joe, Jane, and Bob. The user enters the name, Mary and the screen refreshes to display, Hello, Mary, I've added you to the database. The database contents listed are now Mary, Joe, Jane, and Bob.">
-</p>
-
-## Before you begin
-
-You'll need a [IBM Cloud account](https://console.ng.bluemix.net/registration/), [Git](https://git-scm.com/downloads), [Cloud Foundry CLI](https://github.com/cloudfoundry/cli#downloads), and [Node](https://nodejs.org/en/) installed. If you use [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/), you need access to the [IBM Cloud Private Cloud Foundry](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/cloud_foundry/overview.html) environment.
-
-## Instructions
-
-**IBM Cloud Cloud Foundry**: [Getting started tutorial for Node.js](https://cloud.ibm.com/docs/cloud-foundry-public?topic=cloud-foundry-public-getting-started-node).
+# FaunaFication Project
+This application is built on nodejs express and utilizes leaflet for mapping utilities, MongoDB for database and is designed to  showcase cloud computing with IBM cloud.
+The application serves as a biodiversity platform using interactive maps, web crawling and text sentiment analysis to enhance the users experience and provoke a call to action from the users.
 
 
-**IBM Cloud Kubernetes Service**: [README-kubernetes.md](README-kubernetes.md)
+# Getting started
+To run the application, first set the project as your directory in the terminal then run npm start, as no .env file yet
 
-**IBM Cloud Private**: The starter application for IBM Cloud Private guides you through a similar process. However, instead of hosting both your service and application in the same cloud environment, you use a user-provided service. This guide shows you how to deploy your application to IBM Cloud Private and bind it to a Cloudant Database in IBM Cloud. For the complete procedure, see [Working with user-provided services and the Node.js starter app](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/cloud_foundry/buildpacks/buildpacks_using_nodejsapp.html).
+
+#Deployment
+a CI/CD has been established to deploy the application to IBM Cloud whenever pushes are made to the Master Branch.
+Github Actions are also being utilised to deploy a docker image of the application to dockerhub. We hope to build on this and deploy the dockerized application to a kubernetes cluster.
+
+#Testing
+automated testing is implemented with mocha and chai unit tests and is mainly used to test API endpoints and the verify data passed through the microservices created for this application. Tests can be implemented by running npm test and can be located in the test folder.
+
+#Logging
+Logging is achieved via morgan and returns information such as response time for all calls made in the application
+
+#Authentication
+To keep the admin portal secure we will utilize passport and JSON web tokens in tandem with mongoose, to ensure that the admin portal can only be accessed by the site owner
+
+#Species Data and GeoData
+the mapping data and endangered species data is obtained from the IUCN redlist a non-profit organization that tracks biodiversity across the globe. Due to the limitations of both the IBM cloud lite version and MongoDB's lite tier we decided to limit the species displayed to around 50 endangered Australian species(terrestial mammals)
+
+#Services and API's
+* FaaS 1: url
+* Faas 2: url
+* External API 1: url
+* IBM watson discovery endpoint: url
+* Stripe
