@@ -1,5 +1,5 @@
 ---
 applications:
- - name: FF-frontend-service
+ - name: FaunaFication Frontend
    random-route: true
    memory: 128M
