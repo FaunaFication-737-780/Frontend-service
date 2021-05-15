@@ -3,6 +3,8 @@ FROM node:12-alpine
 ADD views /app/views
 ADD package.json /app
 ADD server.js /app
+ADD routes.js /app
+ADD sockets.js /app
 
 RUN cd /app; npm install
 
