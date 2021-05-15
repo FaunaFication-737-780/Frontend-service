@@ -39,16 +39,18 @@ router.get('/allSpeciesInfoData', (req, res) =>{
 
 })
 
+//Calls FaaS that returns all species info data
 router.get('/findSpeciesInfoData', (req, res) =>{
-    //for someone reason IBM Cloud is not recognizing my parameters will fix later
-    request(('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo', function (error, response, body) {
+    //localhost 4000
+    request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //console.log(body) // Print the google web page.
             res.send(body)
         }
-    }))
+    })
 
 })
+
 
 //IBM discovery FaaS call
 router.get('/DiscoveryNews', (req, res) =>{

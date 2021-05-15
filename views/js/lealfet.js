@@ -46,57 +46,57 @@ const getData = () => {
 
 }
 
+function json2array(json) {
+    let result = [];
+    let keys = Object.keys(json);
+    keys.forEach(function (key) {
+        result.push(json[key]);
+    });
+    return result;
+}
+
+
+
+//API Fetch and Set
+let json
+const userAction = async () => {
+    const response = await fetch('/findSpeciesInfoData');
+    let myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    //console.log(myJson)
+    let json =json2array(myJson)
+    console.log(json)
+    document.getElementById("species-name").innerHTML = json[0]["name"];
+    document.getElementById("species-pop").innerHTML = ("Population:  " + json[0]["popTrend"] + " || " + json[0]["popEst"] );
+    document.getElementById("species-status").innerHTML = ("Status:  " + json[0]["status"]);
+
+
+
+
+
+}
+
+
+
+
+
+
 
 $(document).ready(() => {
     let x =document.cookie
     console.log(x)
 
+    userAction().then(r => console.log(json))
+    //API Fetch and Set
+
 
     getData()
-    //API Fetch and Set
-    let myJson
-    const userAction = async () => {
-        const response = await fetch('/quokkaData');
-        myJson = await response.json(); //extract JSON from the http response
-        // do something with myJson
-        console.log(myJson)
-        document.getElementById('species').innerText = myJson.name
-        document.getElementById('info').innerText = myJson.about
-
-
-        //json data supports multiple coords for scalability for later production
-
-        let COORDS = []
-
-
-        function json2array(json) {
-            var result = [];
-            var keys = Object.keys(json);
-            keys.forEach(function (key) {
-                result.push(json[key]);
-            });
-            return result;
-        }
-
-
-
-    }
-    userAction()
 
 
 
 
-    //CALL FAAS FOR DISCOVERY API DATA
-    let newsJson //using FaaS to imitate data from Watson Discovery as documentation is unclear
-    const sentimentAction = async () => {
-        const response = await fetch('/quokkaNews');
-        newsJson = await response.json(); //extract JSON from the http response
-        console.log(newsJson)
-        document.getElementById('article').innerText = newsJson.article
-        document.getElementById('sentiment').innerText = ("sentiment:   " + newsJson.sentiment)
-        document.getElementById('article-ref').href = newsJson.url
-    }
-    sentimentAction()
+
+
 
 
 
