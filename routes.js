@@ -23,10 +23,14 @@ morgan.token('host', function(req, res) {
 //const geoDataInfoUrl = 'http://localhost:3001/find/name?name='
 const geoDataInfoUrl = 'https://geodata-api.us-south.cf.appdomain.cloud/find/name?name='
 
-//GeoData  for Species call
-router.get('/quokkaData', (req, res) =>{
+
+
+
+
+//Calls FaaS that returns all species info data
+router.get('/allSpeciesInfoData', (req, res) =>{
     //localhost 4000
-    request('https://species-map-service.us-south.cf.appdomain.cloud/quokka', function (error, response, body) {
+    request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/testmongo', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //console.log(body) // Print the google web page.
             res.send(body)
@@ -35,9 +39,19 @@ router.get('/quokkaData', (req, res) =>{
 
 })
 
+router.get('/findSpeciesInfoData', (req, res) =>{
+    //for someone reason IBM Cloud is not recognizing my parameters will fix later
+    request(('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //console.log(body) // Print the google web page.
+            res.send(body)
+        }
+    }))
+
+})
 
 //IBM discovery FaaS call
-router.get('/quokkaNews', (req, res) =>{
+router.get('/DiscoveryNews', (req, res) =>{
     request("https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/hello-world/helloworld.json", function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //console.log(body) // Print the google web page.

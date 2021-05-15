@@ -48,7 +48,9 @@ const getData = () => {
 
 
 $(document).ready(() => {
-    console.log('DOM is loaded')
+    let x =document.cookie
+    console.log(x)
+
 
     getData()
     //API Fetch and Set
