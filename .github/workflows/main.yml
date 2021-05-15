@@ -1,5 +1,8 @@
 name: Build and Deploy the image to Dockerhub
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   build:
