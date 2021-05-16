@@ -1,9 +1,9 @@
-const getData = () => {
+const getData = (speciesName) => {
     var geoData;
     $.get('/mapData', {
         //only for showing an example
-
-        name: 'quokka'
+        name: speciesName
+        //name: 'agileWallaby'
     }, function (data) {
         console.log(data);
         geoData = data.data
@@ -69,14 +69,75 @@ const userAction = async () => {
     document.getElementById("species-name").innerHTML = json[0]["name"];
     document.getElementById("species-pop").innerHTML = ("Population:  " + json[0]["popTrend"] + " || " + json[0]["popEst"] );
     document.getElementById("species-status").innerHTML = ("Status:  " + json[0]["status"]);
+}
+
+let myJson
+const userAction2 = async () => {
+    const response = await fetch('/allSpeciesInfoData');
+    myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    function json2array(json) {
+        var result = [];
+        var keys = Object.keys(json);
+        keys.forEach(function (key) {
+            result.push(json[key]);
+        });
+        return result;
+    }
+
+    let json = json2array(myJson)
+    console.log(json)
+
+    //creates basic collapsible list of species
+    json[0].forEach(element => {
+        if (getCookie("name") == element.name){
+            document.getElementById("species-name").innerHTML = element.name;
+            document.getElementById("species-pop").innerHTML = ("Population:  " + element.popTrend + " || " + element.popEst );
+            document.getElementById("species-status").innerHTML = ("Status:  " + element.status);
+            document.getElementById("species-pic").src = element.image.toString()
+        }
+
+    })
 
 
-
-
+    //Sets cookie to onclick to pass to next page
+    var element = document.getElementsByClassName('species-redirect');
+    for (let i = 0; i < element.length; i++) {
+        let myParent = element[i].parentElement
+        //console.log("first child:   ",myParent.firstElementChild.innerHTML)
+        element[i].addEventListener("click", function () {
+            document.cookie = ("name=" + myParent.firstElementChild.innerHTML)
+            //console.log(document.cookie)
+            //console.log(myParent)
+        }, false);
+    }
 
 }
 
 
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
+}
 
 
 
@@ -85,12 +146,13 @@ const userAction = async () => {
 $(document).ready(() => {
     let x =document.cookie
     console.log(x)
-
-    userAction().then(r => console.log(json))
+    console.log("Cookie:   " + getCookie("name"))
+    console.log("camelcase:   " + camelize(getCookie("name")))
+    userAction2(getCookie("name"))
     //API Fetch and Set
 
 
-    getData()
+    getData(camelize(getCookie("name")))
 
 
 
