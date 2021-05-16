@@ -181,12 +181,12 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/index.js"/>
+
 
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-  
+
   const socket = io()
     socket.on('test',(msg) =>{
       console.log('test: '+msg);
@@ -194,8 +194,9 @@
 
   $(document).ready(function(){
     $('.collapsible').collapsible();
+    document.cookie = ("name=Quokka")
   });
-  
+
   </script>
 
 
