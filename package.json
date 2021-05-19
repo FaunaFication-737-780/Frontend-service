@@ -1,42 +1,97 @@
 {
-  "name": "get-started-node",
-  "main": "server.js",
-  "description": "An introduction to developing Node.js apps on the IBM Cloud platform",
-  "version": "0.2.0",
-  "private": false,
-  "engines": {
-    "node": "10.*"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "test": "mocha --reporter spec"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/IBM-Cloud/get-started-node"
+  "name": "frontend-service",
+  "version": "1.0.0",
+  "description": "This application is built on nodejs express and utilizes leaflet for mapping utilities, MongoDB for database and is designed to  showcase cloud computing with IBM cloud.\r The application serves as a biodiversity platform using interactive maps, web crawling and text sentiment analysis to enhance the users experience and provoke a call to action from the users.",
+  "main": "routes.js",
+  "directories": {
+    "test": "test"
   },
   "dependencies": {
-    "@cloudant/cloudant": "^4.3.0",
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/mongoose": "^1.1.0",
+    "accepts": "^1.3.7",
+    "admin-bro": "^0.6.0",
+    "admin-bro-expressjs": "^0.1.5",
+    "admin-bro-mongoose": "^0.2.0",
+    "array-flatten": "^1.1.1",
     "body-parser": "^1.19.0",
+    "bytes": "^3.1.0",
     "cfenv": "^1.2.4",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
+    "content-disposition": "^0.5.3",
+    "content-type": "^1.0.4",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "cookie-signature": "^1.0.6",
+    "debug": "^2.6.9",
+    "depd": "^1.1.2",
+    "destroy": "^1.0.4",
     "dotenv": "^8.2.0",
+    "ee-first": "^1.1.1",
+    "encodeurl": "^1.0.2",
+    "escape-html": "^1.0.3",
+    "etag": "^1.8.1",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-session": "^1.15.6",
+    "finalhandler": "^1.1.2",
+    "forwarded": "^0.1.2",
+    "fresh": "^0.5.2",
+    "http-errors": "^1.7.2",
+    "iconv-lite": "^0.4.24",
+    "inherits": "^2.0.3",
+    "ipaddr.js": "^1.9.1",
     "jquery": "^3.6.0",
+    "media-typer": "^0.3.0",
+    "merge-descriptors": "^1.0.1",
+    "methods": "^1.1.2",
+    "mime": "^1.6.0",
+    "mime-db": "^1.47.0",
+    "mime-types": "^2.1.30",
     "mocha": "^8.3.2",
     "mongodb": "^3.6.4",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
-    "watson-developer-cloud": "^4.0.1",
+    "ms": "^2.0.0",
+    "negotiator": "^0.6.2",
+    "on-finished": "^2.3.0",
+    "parseurl": "^1.3.3",
+    "path-to-regexp": "^0.1.7",
+    "proxy-addr": "^2.0.6",
+    "qs": "^6.7.0",
+    "range-parser": "^1.2.1",
+    "raw-body": "^2.4.0",
     "request": "^2.88.2",
+    "safe-buffer": "^5.1.2",
+    "safer-buffer": "^2.1.2",
+    "send": "^0.17.1",
+    "serve-static": "^1.14.1",
+    "setprototypeof": "^1.1.1",
     "socket.io": "^4.0.1",
-    "socket.io-client": "^4.0.2"
-
+    "socket.io-client": "^4.0.2",
+    "statuses": "^1.5.0",
+    "toidentifier": "^1.0.0",
+    "type-is": "^1.6.18",
+    "unpipe": "^1.0.0",
+    "utils-merge": "^1.0.1",
+    "vary": "^1.1.2"
   },
-  "author": "IBM Corp",
-  "license": "Apache-2.0",
   "devDependencies": {
-    "ibm-watson": "^6.0.4"
-  }
+    "dotenv": "^6.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node test3.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaunaFication-737-780/Frontend-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FaunaFication-737-780/Frontend-service/issues"
+  },
+  "homepage": "https://github.com/FaunaFication-737-780/Frontend-service#readme"
 }
