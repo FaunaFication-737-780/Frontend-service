@@ -13,7 +13,13 @@ AdminBro.registerAdapter(AdminBroMongoose)
 const AdminBroOptions = {
     //resources: [cat],
     preventAssignment: true,
-    databases: [mongoose]
+    databases: [mongoose],
+    dashboard: {
+        handler: async () => {
+          return { some: 'output' }
+        },
+        component: AdminBro.bundle('./models/dashboard/dashboard.jsx')
+      },
   }
 
 const ADMIN = {
