@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <Box variant="grey">
       <Box variant="white">
-        Hello to the admin portal!
+        <h1>Hello to the admin portal!</h1>
       </Box>
     </Box>
   )
