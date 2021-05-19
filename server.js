@@ -59,6 +59,37 @@ httpServer.listen(port, function() {
 
 
 
+//Admin Portal
+require('dotenv').config()
+require('express-async-errors')
+
+
+const usersRouter = require('./users.router')
+const locationRouter = require('./location.router')
+const adminRouter = require('./admin.router')
+
+const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/SpeciesDataBase'
+const PORT = process.env.PORT || 4040
+
+
+app.use(bodyParser.json())
+
+app.use('/users', usersRouter)
+app.use('/users/:userId/locations', locationRouter)
+app.use('/admin', adminRouter)
+
+app.get('/', (req, res) => res.send('ADMIN has to login. Go to "/admin"'))
+
+//const run = async () => {
+ // await mongoose.connect(MONGO_URL, {
+ //   useNewUrlParser: true
+ // })
+ // await app.listen(PORT, () => {
+ //   console.log(`Example app listening on port ${PORT}!`)
+//  })
+//}
+
+//run()
 
 
 

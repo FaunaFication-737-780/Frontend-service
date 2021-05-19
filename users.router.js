@@ -1,6 +1,6 @@
 const { Router } = require('express')
-const paginate = require('../services/paginate.service')
-const User = require('../models/user.model')
+const paginate = require('./services/paginate.service')
+const User = require('./models/user.model')
 
 const router = new Router()
 

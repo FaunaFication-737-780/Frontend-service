@@ -1,7 +1,7 @@
 const { Router } = require('express')
-const paginate = require('../services/paginate.service')
-const Location = require('../models/location.model')
-const Species = require('../models/species.model')
+const paginate = require('./services/paginate.service')
+const Location = require('./models/location.model')
+const Species = require('./models/species.model')
 
 const router = new Router()
 
