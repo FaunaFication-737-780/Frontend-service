@@ -43,9 +43,11 @@ app.use(passport.session());
 /* add Passport for Moongoose */
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const uri = "mongodb://ray:1998@cluster0-shard-00-00.ho33k.mongodb.net:27017,cluster0-shard-00-01.ho33k.mongodb.net:27017,cluster0-shard-00-02.ho33k.mongodb.net:27017/test?ssl=true&replicaSet=atlas-k8w5gq-shard-0&authSource=admin&retryWrites=true&w=majority";
-/* mongoose.connect('mongodb+srv://admin:admin@cluster0.5cdt0.mongodb.net/geodata', {useNewUrlParser: true, useUnifiedTopology: true}); */
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+/*const uri = "mongodb://ray:1998@cluster0-shard-00-00.ho33k.mongodb.net:27017,cluster0-shard-00-01.ho33k.mongodb.net:27017,cluster0-shard-00-02.ho33k.mongodb.net:27017/test?ssl=true&replicaSet=atlas-k8w5gq-shard-0&authSource=admin&retryWrites=true&w=majority"; */
+ 
+mongoose.connect('mongodb+srv://admin:admin@cluster0.5cdt0.mongodb.net/geodata?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}); 
+ 
+ /* mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}); */
 
 let db = mongoose.connection;
 
@@ -101,7 +103,7 @@ app.post('/login', (req, res, next) => {
            console.log(err);
            return next(err);
     }
-        return res.redirect('/sindex');
+        return res.redirect('/secureindex');
   });
 
   }) (req, res, next);
@@ -109,15 +111,15 @@ app.post('/login', (req, res, next) => {
 
 
  /* Upon successful login, route to the first secure page  */
- app.get('/sindex', 
+ app.get('/secureindex', 
  connectEnsureLogin.ensureLoggedIn(), 
- (req, res) => res.sendFile('/views/secureIndex.html', { root: __dirname})
+ (req, res) => res.sendFile('/views/secureindex.html', { root: __dirname})
 
 ); 
 
 app.get('/logout',function(req, res){
 req.logOut();
-res.redirect('/');
+res.redirect('/index');
 });
 
 
@@ -160,6 +162,10 @@ httpServer.listen(port, function() {
     console.log("To view your app, open this link in your browser: http://localhost:" + port);
 });
 
+
+
+/* Register some users */
+UserDetails.register({username: 'admin', active: false}, 'admin');
 
 
 
