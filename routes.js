@@ -77,7 +77,7 @@ router.get('/login',
 //route to logout.html
 /* logout */
 router.get('/logout', function(req, res, next) {
-  res.redirect('/login');
+  res.redirect('/index.html');
 });
 
 
