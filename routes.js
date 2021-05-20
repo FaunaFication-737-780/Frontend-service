@@ -68,6 +68,19 @@ router.get('/DiscoveryNews', (req, res) =>{
  * will support binomial later
 */
 
+//route to the login.html
+router.get('/login',
+  (req, res) => res.sendFile('/views/login.html', { root: __dirname})
+  );
+
+
+//route to logout.html
+/* logout */
+router.get('/logout', function(req, res, next) {
+  res.redirect('/login');
+});
+
+
 //route the donate.html
 router.get('/donate',
   (req, res) => res.sendFile('/views/donate.html', { root: __dirname})
