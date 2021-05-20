@@ -164,10 +164,10 @@ httpServer.listen(port, function() {
 
 
 
-/* Register some users */
+/* Register some users 
 UserDetails.register({username: 'admin', active: false}, 'admin');
 
-
+*/
 
 
 
