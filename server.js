@@ -67,7 +67,7 @@ const UserDetail = new Schema( {
 });
 
 UserDetail.plugin(passportLocalMongoose);
-const UserDetails = mongoose.model('userInfo', UserDetail, 'userInfo');
+const UserDetails = mongoose.model('adminInfo', UserDetail, 'adminInfo');
 
 
 /* PASSPORT Local Authentication */
