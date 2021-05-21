@@ -47,8 +47,8 @@ db.once('open', function() {
 // load local VCAP configuration  and service credentials
 var vcapLocal;
 try {
-  vcapLocal = require('./vcap-local.json');
-  console.log("Loaded local VCAP", vcapLocal);
+    vcapLocal = require('./vcap-local.json');
+    console.log("Loaded local VCAP", vcapLocal);
 } catch (e) { }
 
 const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
@@ -64,41 +64,6 @@ var port = process.env.PORT || 3000
 httpServer.listen(port, function() {
     console.log("To view your app, open this link in your browser: http://localhost:" + port);
 });
-
-
-
-//Admin Portal
-require('dotenv').config()
-require('express-async-errors')
-
-
-const usersRouter = require('./users.router')
-const locationRouter = require('./location.router')
-const adminRouter = require('./admin.router')
-
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/SpeciesDataBase'
-const PORT = process.env.PORT || 4040
-
-
-app.use(bodyParser.json())
-
-app.use('/users', usersRouter)
-app.use('/users/:userId/locations', locationRouter)
-app.use('/admin', adminRouter)
-
-app.get('/', (req, res) => res.send('ADMIN has to login. Go to "/admin"'))
-
-//const run = async () => {
- // await mongoose.connect(MONGO_URL, {
- //   useNewUrlParser: true
- // })
- // await app.listen(PORT, () => {
- //   console.log(`Example app listening on port ${PORT}!`)
-//  })
-//}
-
-//run()
-
 
 
 
