@@ -5,6 +5,8 @@ ADD package.json /app
 ADD server.js /app
 ADD routes.js /app
 ADD sockets.js /app
+ADD models /app/models
+ADD adminRouter.js /app
 
 RUN cd /app; npm install
 

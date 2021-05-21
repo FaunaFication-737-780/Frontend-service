@@ -101,7 +101,7 @@ const userAction2 = async () => {
 
     })
 
-
+    //test
     //Sets cookie to onclick to pass to next page
     var element = document.getElementsByClassName('species-redirect');
     for (let i = 0; i < element.length; i++) {
