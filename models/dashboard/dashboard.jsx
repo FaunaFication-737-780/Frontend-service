@@ -10,7 +10,19 @@ const Dashboard = () => {
   return (
     <Box variant="grey">
       <Box variant="white">
-        <h1>Hello to the admin portal!</h1>
+      <li class="collection-item">
+                    <div class="row">
+                        <div class="col s3">Name</div>
+                        <div class="col s3">location</div>
+                        <div class="col s3">State</div>
+                        <div class="col s3"> <i class="material-icons">mic</i>
+                            <h6>Speech to control the devices(need future develop)</h6>
+                        </div>
+
+
+                    </div>
+
+                </li>
       </Box>
     </Box>
   )
