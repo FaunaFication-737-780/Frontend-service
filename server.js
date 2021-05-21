@@ -43,7 +43,7 @@ db.once('open', function() {
 });
 
 
-
+/*
 // load local VCAP configuration  and service credentials
 var vcapLocal;
 try {
@@ -54,7 +54,7 @@ try {
 const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
 
 const appEnv = cfenv.getAppEnv(appEnvOpts);
-
+*/
 
 
 //serve static file (index.html, images, css)
