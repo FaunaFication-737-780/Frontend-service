@@ -31,8 +31,16 @@ $(document).ready(() => {
             $("#species").append(
                 $("<div class='cards container hoverable center'></div>").html(
                     $("<div class='container'>").html(
-                        $("<div class='row'><img class='image_card' src=" + element.image + "/></div>" +
-                                "<div>" + "<a href='../leaflet.html' class='card-title grey-text text-darken-4 species-redirect'>" + element.name +"</a>" + "</div>")
+                        $("<div class='row'>" +
+                                "<div class='col s4'>" +
+                                    "<img class='image_card' src=" + element.image + "/>" +
+                                "</div>" +
+                                "<div class='col m8'>" +
+                                    "<a href='../leaflet.html' class='card-title grey-text text-darken-4 species-redirect'>" + element.name +"</a>" +
+                                    "<p>"+ element.habitat +"</p>"+
+                                "</div>" +
+                            "</div>"
+                        )
                     )
                 )
             )
