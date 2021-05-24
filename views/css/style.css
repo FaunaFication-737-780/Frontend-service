@@ -105,5 +105,19 @@ footer.page-footer {
   padding:8px 12px;
   border:0;
   border-radius:4px;
-  font-size:2em"
+}
+
+
+#species{
+  height: auto;
+  width: auto;
+}
+
+.image_card{
+    height: auto;
+    width: 175px;
+    object-fit: cover;
+    padding-top: 35%;
+    padding-right: 10px;
+    margin-left: 0px;
 }

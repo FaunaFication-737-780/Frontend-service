@@ -29,18 +29,23 @@ $(document).ready(() => {
 
         json[0].forEach(element =>{
             $("#species").append(
-                $("<div class='card small center'></div>").html(
-                    $("<div class='card-image waves-effect waves-block waves-light'>"+
-                        //"<div class='activator'>"+ "<img src="  + element.image  + "'style='border:none; width:100px />" +"</div>"+
-                        "</div>"+
-                        "<div class='card-content'>" +
-                        "<span class='card-title activator grey-text text-darken-4'>" + element.name +"</span>" + "<p>" + "<a href='../leaflet.html' class='species-redirect'>" + element.name +"</a>" + "</p>" +
-                        "</div>"+
-                        "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.description + "</span>"+
-                        "</div>"
-                    ))
+                $("<div class='cards container hoverable center'></div>").html(
+                    $("<div class='container'>").html(
+                        $("<div class='row'>" +
+                                "<div class='col s4'>" +
+                                    "<img class='image_card' src=" + element.image + "/>" +
+                                "</div>" +
+                                "<div class='col m8'>" +
+                                    "<a href='../leaflet.html' class='card-title grey-text text-darken-4 species-redirect'>" + element.name +"</a>" +
+                                    "<p>"+ element.habitat +"</p>"+
+                                "</div>" +
+                            "</div>"
+                        )
+                    )
+                )
             )
         })
+
 
 
 
