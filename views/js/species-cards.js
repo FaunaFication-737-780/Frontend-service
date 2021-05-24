@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+});
+
 $(document).ready(() => {
 
     console.log('DOM is loaded')
@@ -5,6 +10,9 @@ $(document).ready(() => {
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems, options);
     });
+    $('.tabs').tabs();
+
+
 
 
     //API Fetch and Set
