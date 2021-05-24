@@ -117,7 +117,20 @@ footer.page-footer {
     height: auto;
     width: 175px;
     object-fit: cover;
-    padding-top: 35%;
+    padding-top: 8%;
     padding-right: 10px;
     margin-left: 0px;
+}
+#video_opt{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+#icon{
+    height: 70px;
+    width: 70px;
+}
+#icon_2{
+    height: 80px;
+    width: 70px;
 }
