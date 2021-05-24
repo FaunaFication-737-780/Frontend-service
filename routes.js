@@ -30,7 +30,7 @@ const geoDataInfoUrl = 'https://geodata-api.us-south.cf.appdomain.cloud/find/nam
 //Calls FaaS that returns all species info data
 router.get('/allSpeciesInfoData' , (req, res) =>{
     //localhost 4000
-    request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/testmongo', function (error, response, body) {
+    request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/getAllSpeciesInfo', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //console.log(body) // Print the google web page.
             res.send(body)
