@@ -39,28 +39,51 @@
 
 <div class="row teal white-text">
     <div class="icon-block">
-        <h2 class="center white-text"><i class="material-icons">filter_vintage</i></h2>
-        <h5 class="center">THEIR FUTURE IS IN OUR HANDS.</h5>
+        <div class="col s12 center">
+            <a href="/" class="breadcrumb">Home</a>
+            <a href="species-cards.html" class="breadcrumb">Species</a>
+        </div>
 
-        <p class="light center">While we might focus our efforts on charismatic animals — like rock-wallabies, black cockatoos, quolls and marine turtles — their protection enhances the survival of many other species. Entire landscapes and ecosystems benefit from our approach.
-            Together, we can work for the conservation of Australia's most threatened and endangered species, restore their habitats and win the fight against extinction.</p>
     </div>
 
-    <div id="index-banner" class="parallax-container">
+    <div>
         <div class="section no-pad-bot">
-            <video class="responsive-video" autoplay width="100%" height="100px" style="border: none; right: 0;top: 0; margin: 0px"  >
-                <source src="assets/animal.mp4">
-            </video>
-            <div class="container" style="position: relative">
-
-                <h2 class="header center white-text">Species</h2>
+            <div>
+                <video id="video_opt" class="responsive-video" autoplay>
+                    <source src="assets/animal.mp4">
+                </video>
+            </div>
+            <div class="container">
+                <h5 class="header center white-text">Why it matters</h5>
+                <p class="light center">Over thirty million years of geographical isolation has created animal and plant species unique to our continent.
+                    However, this rich biological diversity has seriously declined since European settlement. Some 29 Australian mammals have become extinct over the past 200 years.
+                    Sadly, other taxonomic groups have fared little better.</p>
+                <div class="center">
+                    <img id="icon_2" src="assets/animal_icon_2.png"/>
+                </div>
+                <h5 class="center">THEIR FUTURE IS IN OUR HANDS.</h5>
+                <p class="light center">While we might focus our efforts on charismatic animals — like rock-wallabies,
+                    black cockatoos, quolls and marine turtles — their protection enhances the survival of many other species.
+                    Entire landscapes and ecosystems benefit from our approach.
+                    Together, we can work for the conservation of Australia's most threatened and endangered species,
+                    restore their habitats and win the fight against extinction.</p>
             </div>
         </div>
     </div>
-    <br/>
+</div>
+<div id="background_1">
+    <div class="center">
+        <img id="icon" src="assets/animal_icon.png"/>
+    </div>
+    <h5 class="center">Species We Save</h5>
+    <div class="divider"></div>
+    <div class="cards" id="species"></div>
 </div>
 
-<div class="cards" id="species"></div>
+
+
+
+
 <script src="js/species-cards.js"></script>
 </body>
 </html>
