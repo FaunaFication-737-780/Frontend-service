@@ -42,7 +42,7 @@ $(document).ready(() => {
                         //"<div class='activator'>"+ "<img src="  + element.image  + "'style='border:none; width:100px />" +"</div>"+
                         "</div>"+
                         "<div class='card-content'>" +
-                        "<span class='card-title activator grey-text text-darken-4'>" + element.name +"</span>" + "<p>" + "<a href='../leaflet.html' class='species-redirect'>" + element.name +"</a>" + "</p>" +
+                        "<span class='card-title activator grey-text text-darken-4'>" + element.name +"</span>" + "<p>" + "<a href='../species-cards.html' class='species-redirect'>" + element.name +"</a>" + "</p>" +
                         "</div>"+
                         "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.description + "</span>"+
                         "</div>"
