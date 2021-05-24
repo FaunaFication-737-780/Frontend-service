@@ -26,13 +26,30 @@ $(document).ready(() => {
         let json =json2array(myJson)
         console.log(json)
 
-        //creates basic collapsible list of species
-        json[0].forEach(element => {
-            $("#species").append($("<li>").html($("<div class='collapsible-header teal'>" + element.name +  "</div>"
-                + "<div class='collapsible-body'>" + "<span>" +  element.name + "</span>" +"<a  href='../leaflet.html' class=\"waves-effect waves-light btn species-redirect\"> Button</a>"   +"</div>")))
 
-
+        json[0].forEach(element =>{
+            $("#species").append(
+                $("<div class='cards hoverable center'></div>").html(
+                    $("<div class='container '>").html(
+                        $("<div class='row'>" +
+                                "<div class='col s4'>" +
+                                    "<img class='image_card' src=" + element.image + "/>" +
+                                "</div>" +
+                                "<div class='col m8'>" +
+                                    "<a href='../leaflet.html' class='card-title text-darken-1 species-redirect'>" + element.name +"</a>" +
+                                    "<p>"+ element.habitat +"</p>"+
+                                "</div>" +
+                            "</div>"+
+                            "<div class='divider'></div>"
+                        )
+                    )
+                )
+            )
         })
+
+
+
+
 
 
 
