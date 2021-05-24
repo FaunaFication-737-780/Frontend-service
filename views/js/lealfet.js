@@ -38,7 +38,6 @@ const getData = (speciesName) => {
                 zoomOffset: -1
             }).addTo(map);
         //add geojson file
-        
         L.geoJson(geoData).addTo(map)
         //fit the boundary 
         map.fitBounds(fixedBox)
