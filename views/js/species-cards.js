@@ -92,14 +92,14 @@ const userAction = async () => {
     json[0].forEach(element => {
         var imageId = "image" + element._id
         var nameId = "name" + element._id
-        var pID = "p"+element._id
+        var pID = "p" + element._id
         $("#species").append(
             $("<div class='card small center'></div>").html(
                 $("<div class='card-image waves-effect waves-block waves-light'>" +
-                    "<div class='activator'>" + "<img"+ " id='"+imageId  +"' src=" + element.image + "'style='border:none; width:100px />" + "</div>" +
+                    "<div class='activator'>" + "<img" + " id='" + imageId + "' src=" + element.image + "'style='border:none; width:100px />" + "</div>" +
                     "</div>" +
                     "<div class='card-content'>" +
-                    "<a "+ " id='"+nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p"+ " id='"+ pID+ "'>" + element.status + "</p>" +
+                    "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
                     "</div>" +
                     "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>" +
                     "</div>"
@@ -115,7 +115,7 @@ const userAction = async () => {
     document.getElementById("species-status").innerText = json[0][0].status
 
 
-  
+
 
     //Sets cookie to onclick to pass to next page
     var element = document.getElementsByClassName('species-redirect');
@@ -148,7 +148,62 @@ const userAction = async () => {
 
 }
 
+const updateSpeciesInfo = (jsonData) => {
+    console.log('this is update from socket');
+    //testing the update data
+    // if(!jsonData.data.name) console.log('name does not updated');
+    // else console.log(jsonData.data.name);
+    var data = jsonData.data
+    var id = jsonData._id
+    if (data.name != null) {
+        var nameId = "name" + id
+        var newName = document.getElementById(nameId)
+        if (newName != null) {
+            newName.innerText = data.name
+        }
 
+
+    }
+    if (data.status != null) {
+        var pId = "p" + id
+        var newP = document.getElementById(pId)
+        if (newP != null) {
+            newP.innerText = data.status
+        }
+
+    }
+    if (data.image != null) {
+        var imageId = "image" + id
+        var newImage = document.getElementById(imageId)
+        if (imageId != null) {
+            newImage.src = data.image
+        }
+    }
+
+
+
+
+}
+const newSpeciesInfo = (jsonData) => {
+    var imageId = "image" + jsonData._id
+    var nameId = "name" + jsonData._id
+    var pID = "p" + jsonData._id
+
+    console.log('this is insert from socket');
+
+    $("#species").append(
+        $("<div class='card small center'></div>").html(
+            $("<div class='card-image waves-effect waves-block waves-light'>" +
+                "<div class='activator'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + "'style='border:none; width:100px />" + "</div>" +
+                "</div>" +
+                "<div class='card-content'>" +
+                "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + jsonData.name + "</a>" + "<p" + " id='" + pID + "'>" + jsonData.status + "</p>" +
+                "</div>" +
+                "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + jsonData.habitat + "</span>" +
+                "</div>"
+            ))
+    )
+}
 
 
 $(document).ready(() => {
@@ -157,13 +212,23 @@ $(document).ready(() => {
 
     //init tabs
     $('.tabs').tabs();
-    
+
     userAction()
 
     const socket = io()
     socket.on('updateData', (data) => {
+
+        if (data.type == 'insert') {
+            newSpeciesInfo(data.data)
+
+        }
+
+        if (data.type == 'update') {
+            updateSpeciesInfo(data)
+
+        }
         //userAction()
-        console.log('socket message: ' );
+        console.log('socket message: ');
         console.log(data);
     })
 

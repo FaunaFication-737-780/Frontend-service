@@ -15,7 +15,7 @@ const socketIo = (io,app) => {
             console.log('the data from backend is ');
             console.log(data);
             io.emit('updateData',data)
-            res.send("Hello")
+            res.send("Data received")
         })
         
         
