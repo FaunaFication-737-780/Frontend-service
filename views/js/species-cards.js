@@ -72,16 +72,6 @@ const getData = (speciesName) => {
 
 $(document).ready(() => {
 
-    console.log('DOM is loaded')
-
-
-    /*document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, options);
-    });
-
-     */
-
     //init tabs
     $('.tabs').tabs();
 
@@ -123,6 +113,13 @@ $(document).ready(() => {
             )
         })
 
+        //sets default landing card for species
+        getData(camelize(json[0][0].name))
+        document.getElementById("species-name").innerText = json[0][0].name
+        document.getElementById("species-pop").innerText = ( "Population trend:   " + json[0][0].popTrend)
+        document.getElementById("species-pic").src = json[0][0].image
+        document.getElementById("species-status").innerText=json[0][0].status
+
 
 
 
@@ -143,15 +140,15 @@ $(document).ready(() => {
                 //console.log(document.cookie)
                 //console.log(myParent)
                 let species = myParent.firstElementChild.innerHTML
-                //document.getElementById('mapid').innerHTML = "";
-
                 getData(camelize(species))
 
                 json[0].forEach(element => {
                     if (species == element.name)
                     {
                         document.getElementById("species-name").innerText = element.name
+                        document.getElementById("species-pop").innerText = ( "Population trend:   " + element.popTrend)
                         document.getElementById("species-pic").src = element.image
+                        document.getElementById("species-status").innerText=element.status
 
 
 
