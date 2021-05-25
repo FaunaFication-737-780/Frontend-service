@@ -39,12 +39,12 @@ $(document).ready(() => {
             $("#species").append(
                 $("<div class='card small center'></div>").html(
                     $("<div class='card-image waves-effect waves-block waves-light'>"+
-                        //"<div class='activator'>"+ "<img src="  + element.image  + "'style='border:none; width:100px />" +"</div>"+
+                        "<div class='activator'>"+ "<img src="  + element.image  + "'style='border:none; width:100px />" +"</div>"+
                         "</div>"+
                         "<div class='card-content'>" +
-                        "<span class='card-title activator grey-text text-darken-4'>" + element.name +"</span>" + "<p>" + "<a href='../species-cards.html' class='species-redirect'>" + element.name +"</a>" + "</p>" +
+                        "<a class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name +"</a>" + "<p>" +  element.status  + "</p>" +
                         "</div>"+
-                        "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.description + "</span>"+
+                        "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>"+
                         "</div>"
                     ))
             )
@@ -56,17 +56,35 @@ $(document).ready(() => {
 
 
 
+
         //Sets cookie to onclick to pass to next page
         var element= document.getElementsByClassName('species-redirect');
         for(let i=0;i<element.length;i++){
             let myParent = element[i].parentElement
-            //console.log("first child:   ",myParent.firstElementChild.innerHTML)
+            console.log("first child:   ",myParent.firstElementChild.innerHTML)
             element[i].addEventListener("click", function(){
-                document.cookie= ("name=" + myParent.firstElementChild.innerHTML)
+                //document.cookie= ("name=" + myParent.firstElementChild.innerHTML)
                 //console.log(document.cookie)
                 //console.log(myParent)
+                let species = myParent.firstElementChild.innerHTML
+
+
+                json[0].forEach(element => {
+                    if (species == element.name)
+                    {
+                        document.getElementById("species-name").innerText = element.name
+                        document.getElementById("species-pic").src = element.image
+                    }
+                })
+
+
+
             }, false);
         }
+
+
+
+
 
 
 
