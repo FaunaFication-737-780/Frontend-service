@@ -9,7 +9,7 @@ const io = require("socket.io")(httpServer);
 const socket = require('./sockets')
 const adminRouter = require('./adminRouter')
 
-socket.openSocket(io)
+socket.openSocket(io,app)
 
 
 

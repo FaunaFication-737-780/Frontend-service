@@ -20,10 +20,10 @@
     <link rel = "stylesheet"
           href = "https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel = "stylesheet"
-          href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+          href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script type = "text/javascript"
             src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
     </script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,53 +53,70 @@
 </nav>-->
 
 
-<ul id="slide-out" class="sidenav sidenav-fixed">
-    <li><a href="index.html" class="teal-text">FaunaFication</a></li>
 
-        <div class="card small center" id="species">
-        </div>
-
-
-
-
-</ul>
 
 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-<div class="container">
+
 <div class="row">
 
-
-
-
-    <div class="col s12 m8 l9 "> <!-- Note that "m8 l9" was added -->
-        <ul class="tabs">
-            <li class="tab col s3"><a class="active" href="#test1">Information</a></li>
-            <li class="tab col s3"><a href="#test2">Maps</a></li>
-            <li class="tab col s3 "><a href="#test3">Threats</a></li>
-            <li class="tab col s3"><a href="#test4">Insights</a></li>
-        </ul>
-
-        <div id="test1" class="col s12">
-            <h4 class="center subheader teal-text" id="species-name"></h4>
-            <h5 class="center subheader teal-text" id="species-pop"></h5>
-            <h5 class="center subheader teal-text" id="species-status"></h5>
-            <img src="" class="center-block" id="species-pic" height="600" width="600"/>
-        </div>
-        <div id="test2" class="col s12"><div id="mapid" class="center-block"></div></div>
-        <div id="test3" class="col s12">
-            <h5 class="center subheader teal-text">Threats:</h5>
-            <ul class="collection center" id="species-threats">
-                <li class="collection-item">Fires</li>
-                <li class="collection-item">Feral Cats and Foxes</li>
-            </ul></div>
-        <div id="test4" class="col s12">Test 4</div>
-
+    <div class="col s3">
+      <!-- Grey navigation panel -->
+      <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li><a href="index.html" class="teal-text">FaunaFication</a></li>
+    
+            <div class="card small center" id="species">
+            </div>
+    
+    
+    
+    
+    </ul>
     </div>
 
-</div>
+    <div class="col s9">
+      <!-- Teal page content  -->
+      <div class="container">
+        <div class="row">
+        
+        
+        
+        
+            <div class="col s12 m8 l9 "> <!-- Note that "m8 l9" was added -->
+                <ul class="tabs">
+                    <li class="tab col s3"><a class="active" href="#test1">Information</a></li>
+                    <li class="tab col s3"><a href="#test2">Maps</a></li>
+                    <li class="tab col s3 "><a href="#test3">Threats</a></li>
+                    <li class="tab col s3"><a href="#test4">Insights</a></li>
+                </ul>
+        
+                <div id="test1" class="col s12">
+                    <h4 class="center subheader teal-text" id="species-name"></h4>
+                    <h5 class="center subheader teal-text" id="species-pop"></h5>
+                    <h5 class="center subheader teal-text" id="species-status"></h5>
+                    <img src="" class="center-block" id="species-pic" height="600" width="600"/>
+                </div>
+                <div id="test2" class="col s12"><div id="mapid" class="center-block"></div></div>
+                <div id="test3" class="col s12">
+                    <h5 class="center subheader teal-text">Threats:</h5>
+                    <ul class="collection center" id="species-threats">
+                        <li class="collection-item">Fires</li>
+                        <li class="collection-item">Feral Cats and Foxes</li>
+                    </ul></div>
+                <div id="test4" class="col s12">Test 4</div>
+        
+            </div>
+        
+        </div>
+        
+        
+        </div>
+        
+        
+        
+    </div>
 
-</div>
+  </div>
 
 
 
@@ -107,8 +124,9 @@
 
 
 
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/species-cards.js"></script>
 
-<script src="js/species-cards.js"></script>"
 
 </body>
 </html>
