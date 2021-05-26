@@ -1,8 +1,8 @@
 #header_donation {
 
-    min-height: 60vh;
+    min-height: 65vh;
     width: 100%;
-    background-image: url("../assets/WildlifeHeader.png");
+    background-image: url("../assets/ch-animals-header.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -12,11 +12,10 @@
 }
 
 .donation_hello_message {
-    top: 10%;
-    background: hsla(168, 100%, 50%, 0.3);
-    -webkit-text-fill-color: white;
-    /* Will override color (regardless of order) */
-
+    position: absolute;
+    bottom: 0px;
+    background: hsla(168, 100%, 50%, 0.157);
+    -webkit-text-fill-color: white
 }
 
 #donation_hello_message_title {
@@ -25,13 +24,25 @@
 
 }
 
+#donation_hello_message_text {
+    font-size: 6mm;
+}
+
 #donation_refer_message {
 
     background: hsla(168, 100%, 50%, 0.1);
-    min-height: 25vh;
+    min-height: 20vh;
     border-radius: 80px;
     word-wrap: break-word;
+    font-size: 7mm;
+    font-style: oblique;
+    font-family: 'Open Sans', sans-serif;
 }
+#donation_refer_message_author{
+    text-align: right;
+}
+
+
 
 
 
