@@ -75,21 +75,33 @@
         <form class="col s10 offset-s1">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Your first name" id="first_name" type="text" class="validate">
-                    <label for="first_name" style="font-size: 5mm;color: #00bfa5;">First Name</label>
+                    <input placeholder="Your first name" id="first_name" type="text" class="valid" >
+                    <label id="firstNameLabel" for="first_name" style="font-size: 5mm;">First Name (required)</label>
+                    <span class="helper-text" data-error="First name is required">Helper text</span>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="Your last name" id="last_name" type="text" class="validate">
-                    <label for="last_name" style="font-size: 5mm;color: #00bfa5;">Last Name</label>
+                    <input placeholder="Your last name" id="last_name" type="text" class="valid" >
+                    <label id="lastNameLabel" for="last_name" style="font-size: 5mm;">Last Name (required)</label>
+                    <span class="helper-text" data-error="Last name is required" >Helper text</span>
                 </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="Your email address" id="email" type="email" class="validate">
-                    <label for="email" style="font-size: 5mm;color: #00bfa5;">Email</label>
+                <div class="input-field col s6">
+                    <input placeholder="Your email address" id="email" type="email" class="valid" >
+                    <label id="emailLabel" for="email" style="font-size: 5mm;">Email (required)</label>
+                    <span class="helper-text" data-error="Email is required">Helper text</span>
+                </div>
+                <div class="input-field col s6">
+                    
+                    <input placeholder="Your mobile phone number" id="phoneNumber" type="number" >
+                    <label for="phoneNumber" style="font-size: 5mm;color: #00bfa5;">Phone number</label>
                 </div>
             </div>
+
+           
+               
+           
 
             <div class="row">
                 <div class="col s6">
@@ -135,7 +147,7 @@
                 </div>
             </div>
 
-            <a class="waves-effect waves-light btn teal accent-4" id="donationBTN">Checkout</a>
+            <a class="waves-effect waves-light btn teal accent-4" id="donationBTN" type="submit">Checkout</a>
         </form>
     </div>
 
