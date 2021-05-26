@@ -59,6 +59,8 @@ const appEnv = cfenv.getAppEnv(appEnvOpts);
 
 //serve static file (index.html, images, css)
 app.use(express.static(__dirname + '/views'));
+app.use('/success', express.static('./views/paymentSuccess.html'))
+app.use('/cancel', express.static('./views/paymentCancel.html'))
 
 var port = process.env.PORT || 3000
 httpServer.listen(port, function() {

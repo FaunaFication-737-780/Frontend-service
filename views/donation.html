@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>FaunaFication</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/donation.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="/" class="brand-logo">FaunaFication</a>
+            <ul class="right hide-on-med-and-down">
+                <li> <a href="species-cards.html">Species</a></li>
+                <!--li> <a href="#">Charities</a></li-->
+                <li><a href="./donation.html">Donate</a></li>
+                <li><a href="/admin">Log In</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="/admin">Log In</a></li>
+                <li><a href="species-cards.html">Species</a>></li>
+                <!--li> <a href="#">Charities</a></li-->
+                <li><a href="./donation.html">Donate</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <div class="row" id="header_donation">
+        <div class="col s5 offset-s1 donation_hello_message">
+            <h2 id="donation_hello_message_title">You can help!</h2>
+            <p id="donation_hello_message_text">You can protect threatened species and their habitats today with a
+                donation to
+                FaunaFication. Your support will make FaunaFication continually working on protect animals
+                in Australia.</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="row">
+            <div class="col s8 offset-s2" id="donation_refer_message">
+
+                <p class="col s10 offset-s1" id="donation_refer_message_inner"> Extinction is a natural process that
+                    would
+                    happen with or without humans. But, while that is the case, research shows that extinctions are
+                    happening quicker now than ever before. And, loss of habitat is by far the biggest cause. This is a
+                    problem that we need to address</p>
+
+                <p class="col s10 offset-s1" id="donation_refer_message_author">
+                    March 9, 2018 by Jane Warley
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+        <form class="col s10 offset-s1">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Your first name" id="first_name" type="text" class="valid" >
+                    <label id="firstNameLabel" for="first_name" style="font-size: 5mm;">First Name (required)</label>
+                    <span class="helper-text" data-error="First name is required">Helper text</span>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Your last name" id="last_name" type="text" class="valid" >
+                    <label id="lastNameLabel" for="last_name" style="font-size: 5mm;">Last Name (required)</label>
+                    <span class="helper-text" data-error="Last name is required" >Helper text</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Your email address" id="email" type="email" class="valid" >
+                    <label id="emailLabel" for="email" style="font-size: 5mm;">Email (required)</label>
+                    <span class="helper-text" data-error="Email is required">Helper text</span>
+                </div>
+                <div class="input-field col s6">
+                    
+                    <input placeholder="Your mobile phone number" id="phoneNumber" type="number" >
+                    <label for="phoneNumber" style="font-size: 5mm;color: #00bfa5;">Phone number</label>
+                </div>
+            </div>
+
+           
+               
+           
+
+            <div class="row">
+                <div class="col s6">
+                    <p style="font-size: 5mm;color: #00bfa5;">
+                        Amount
+                    </p>
+                    <p>
+                        <label>
+                            <input name="amount" type="radio" value="price_1GtQE4ECm5TjDc1IKn99R8M7" unchecked />
+                            <span style="font-size: 5mm;">$5</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="amount" type="radio" value="price_1GtQEmECm5TjDc1I9oCyqzyd" unchecked />
+                            <span style="font-size: 5mm;">$10</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="amount" type="radio" value="price_1GtQGvECm5TjDc1IFaRIJpCx" unchecked />
+                            <span style="font-size: 5mm;">$20</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="amount" type="radio" value="price_1GtQG9ECm5TjDc1IDIvmyrhh" unchecked />
+                            <span style="font-size: 5mm;">$50</span>
+                        </label>
+                    </p>
+                </div>
+
+                <div class="col s6">
+                    <p style="font-size: 5mm;color: #00bfa5;">
+                        Would you consider to donate us Monthly?
+                    </p>
+                    <p>
+                        <label>
+                          <input type="checkbox" id="monthCheckbox"/>
+                          <span style="font-size: 5mm;">Yes</span>
+                        </label>
+                      </p>
+                </div>
+            </div>
+
+            <a class="waves-effect waves-light btn teal accent-4" id="donationBTN" type="submit">Checkout</a>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
+                        it's our full time job. Any amount would help support and continue development on this project
+                        and is greatly appreciated.</p>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="./js/donation.js"></script>
+    <script src="https://js.stripe.com/v3"></script>
+
+
+
+
+
+
+</body>
+
+</html>
