@@ -4,6 +4,7 @@ const AdminBroMongoose = require('@admin-bro/mongoose')
 
 //use user now for example
 const User = require('./models/userModel')
+require('./models/speciesInfoModel')
 const mongoose = require('mongoose')
 const favicon = require('./models/logos')
 

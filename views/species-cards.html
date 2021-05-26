@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>FaunaFication-Species</title>
+    <title>Title</title>
     <!-- CSS  -->
+
+    <!-- Leaflet CSS package-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS {LEAFLET JS PACKAGE]-->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <!-- set map size-->
+    <style>#mapid { height: 500px; width: 800px; }</style>
+
     <meta name = "viewport" content = "width = device-width, initial-scale = 1">
     <link rel = "stylesheet"
           href = "https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel = "stylesheet"
-          href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+          href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script type = "text/javascript"
             src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
     </script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,6 +32,8 @@
 </head>
 <body>
 
+
+<!--
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo">FaunaFication</a>
@@ -35,55 +50,83 @@
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
-</nav>
+</nav>-->
 
-<div class="row teal white-text">
-    <div class="icon-block">
-        <div class="col s12 center">
-            <a href="/" class="breadcrumb">Home</a>
-            <a href="species-cards.html" class="breadcrumb">Species</a>
-        </div>
 
+
+
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+<div class="row">
+
+    <div class="col s3">
+      <!-- Grey navigation panel -->
+      <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li><a href="index.html" class="teal-text">FaunaFication</a></li>
+    
+            <div class="card small center" id="species">
+            </div>
+    
+    
+    
+    
+    </ul>
     </div>
 
-    <div>
-        <div class="section no-pad-bot">
-            <div>
-                <video id="video_opt" class="responsive-video" autoplay>
-                    <source src="assets/animal.mp4">
-                </video>
-            </div>
-            <div class="container">
-                <h5 class="header center white-text">Why it matters</h5>
-                <p class="light center">Over thirty million years of geographical isolation has created animal and plant species unique to our continent.
-                    However, this rich biological diversity has seriously declined since European settlement. Some 29 Australian mammals have become extinct over the past 200 years.
-                    Sadly, other taxonomic groups have fared little better.</p>
-                <div class="center">
-                    <img id="icon_2" src="assets/animal_icon_2.png"/>
+    <div class="col s9">
+      <!-- Teal page content  -->
+      <div class="container">
+        <div class="row">
+        
+        
+        
+        
+            <div class="col s12 m8 l9 "> <!-- Note that "m8 l9" was added -->
+                <ul class="tabs">
+                    <li class="tab col s3"><a class="active" href="#test1">Information</a></li>
+                    <li class="tab col s3"><a href="#test2">Maps</a></li>
+                    <li class="tab col s3 "><a href="#test3">Threats</a></li>
+                    <li class="tab col s3"><a href="#test4">Insights</a></li>
+                </ul>
+        
+                <div id="test1" class="col s12">
+                    <h4 class="center subheader teal-text" id="species-name"></h4>
+                    <h5 class="center subheader teal-text" id="species-pop"></h5>
+                    <h5 class="center subheader teal-text" id="species-status"></h5>
+                    <img src="" class="center-block" id="species-pic" height="600" width="600"/>
                 </div>
-                <h5 class="center">THEIR FUTURE IS IN OUR HANDS.</h5>
-                <p class="light center">While we might focus our efforts on charismatic animals — like rock-wallabies,
-                    black cockatoos, quolls and marine turtles — their protection enhances the survival of many other species.
-                    Entire landscapes and ecosystems benefit from our approach.
-                    Together, we can work for the conservation of Australia's most threatened and endangered species,
-                    restore their habitats and win the fight against extinction.</p>
+                <div id="test2" class="col s12"><div id="mapid" class="center-block"></div></div>
+                <div id="test3" class="col s12">
+                    <h5 class="center subheader teal-text">Threats:</h5>
+                    <ul class="collection center" id="species-threats">
+                        <li class="collection-item">Fires</li>
+                        <li class="collection-item">Feral Cats and Foxes</li>
+                    </ul></div>
+                <div id="test4" class="col s12">Test 4</div>
+        
             </div>
+        
         </div>
+        
+        
+        </div>
+        
+        
+        
     </div>
-</div>
-<div id="background_1">
-    <div class="center">
-        <img id="icon" src="assets/animal_icon.png"/>
-    </div>
-    <h5 class="center">Species We Save</h5>
-    <div class="divider"></div>
-    <div class="cards" id="species"></div>
-</div>
+
+  </div>
 
 
 
 
 
+
+
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/species-cards.js"></script>
+
+
 </body>
 </html>
