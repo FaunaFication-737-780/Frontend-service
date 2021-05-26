@@ -34,7 +34,7 @@ const stripePayment = async () => {
                 // Instead use one of the strategies described in
                 // https://stripe.com/docs/payments/checkout/fulfillment
                 successUrl: window.location.origin+'/success',
-                cancelUrl: 'https://localhost:3000/canceled.html',
+                cancelUrl: window.location.origin+'/cancel',
             })
             .then(function (result) {
                 if (result.error) {
