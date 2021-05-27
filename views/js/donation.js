@@ -24,9 +24,11 @@ const stripePayment = async () => {
         var firstName = $('#first_name').val()
         var lastName = $('#last_name').val()
         var email = $('#email').val()
-        await $.get( "/donatedPeople", { name: firstName+" "+lastName, email:email }, function(data){
-            console.log(data);
-        });
+        // await $.get( "/donatedPeople", { name: firstName+" "+lastName, email:email }, function(data){
+        //     console.log(data);
+        // });
+        sessionStorage.setItem('name', firstName+" "+lastName)
+        sessionStorage.setItem('email', email)
 
         var stripe = Stripe('pk_test_853qy8se4d90x2LxszV5GAi700pL7qNzqY');
         await stripe.redirectToCheckout({
