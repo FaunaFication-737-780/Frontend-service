@@ -7,13 +7,13 @@ var fs = require("fs");
 var path = require("path");
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
-    flags: "a"
+  flags: "a"
 });
 //router.use(morgan('combined', {stream: accessLogStream}));
 //router.use(morgan('tiny'));
 //we are defining a new parameter called host
-morgan.token('host', function(req, res) {
-    return req.hostname;
+morgan.token('host', function (req, res) {
+  return req.hostname;
 });
 
 /**
@@ -28,79 +28,84 @@ const geoDataInfoUrl = 'https://geodata-api.us-south.cf.appdomain.cloud/find/nam
 
 
 //Calls FaaS that returns all species info data
-router.get('/allSpeciesInfoData' , (req, res) =>{
-    //localhost 4000
-    request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/getAllSpeciesInfo', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            //console.log(body) // Print the google web page.
-            res.send(body)
-        }
-    })
+router.get('/allSpeciesInfoData', (req, res) => {
+  //localhost 4000
+  request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/getAllSpeciesInfo', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body) // Print the google web page.
+      res.send(body)
+    }
+  })
 
 })
 
 //Calls FaaS that returns all species info data
-router.get('/findSpeciesInfoData', (req, res) =>{
-    //localhost 4000
-    request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            //console.log(body) // Print the google web page.
-            res.send(body)
-        }
-    })
+router.get('/findSpeciesInfoData', (req, res) => {
+  //localhost 4000
+  request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body) // Print the google web page.
+      res.send(body)
+    }
+  })
 
 })
 
 
 //IBM discovery FaaS call
-router.get('/DiscoveryNews', (req, res) =>{
-    request("https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/hello-world/helloworld.json", function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            //console.log(body) // Print the google web page.
-            res.send(body)
-        }
-    })
+router.get('/DiscoveryNews', (req, res) => {
+  request("https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/hello-world/helloworld.json", function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body) // Print the google web page.
+      res.send(body)
+    }
+  })
 
 })
 
 /**
  * now is only for using common name
  * will support binomial later
-*/
+ */
 
-//route the donate.html
-router.get('/donate',
-  (req, res) => res.sendFile('/views/donate.html', { root: __dirname})
-  );
-
-
-//route the success.html
-router.get('/donate',
-  (req, res) => res.sendFile('/views/success.html', { root: __dirname})
-  );
-
-  //route the cancelled.html
-router.get('/donate',
-(req, res) => res.sendFile('/views/cancelled.html', { root: __dirname})
-);
 
 
 
 router.get('/mapData', (req, res) => {
-    let name = encodeURI(req.query.name)
-    let url = geoDataInfoUrl + name
-    request(url, function (error, result, body) {
-      if (error != null) {
-        res.send(error)
-      } else {
-        let jsonResult = JSON.parse(body)
-        
-        res.json(jsonResult)
-      }
-  
-    })
-  
+  let name = encodeURI(req.query.name)
+  let url = geoDataInfoUrl + name
+  request(url, function (error, result, body) {
+    if (error != null) {
+      res.send(error)
+    } else {
+      let jsonResult = JSON.parse(body)
+
+      res.json(jsonResult)
+    }
+
   })
+
+})
+
+router.get('/donatedPeople', (req, res) => {
+  let name = encodeURI(req.query.name)
+  let email = encodeURI(req.query.email)
+  //localhost for now just testing 
+  request('http://localhost:3002/donate/?name='+name+"&email="+email, function (error, result, body) {
+    if(error!=null){
+      res.send(error)
+    }else{
+      //log the result if send success
+      console.log('success send to the back end');
+      console.log("the name is : " +name );
+      console.log("the email is: "+ email);
+      
+      
+      res.send(body)
+    }
+
+  })
+})
 
 
 

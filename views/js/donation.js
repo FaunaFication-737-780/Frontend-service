@@ -2,6 +2,7 @@ const stripePayment = async () => {
     var priceID
     var payMode = 'payment'
     var radios = document.getElementsByName('amount');
+    
 
     console.log($('#first_name').val());
     for (var i = 0, length = radios.length; i < length; i++) {
@@ -13,16 +14,22 @@ const stripePayment = async () => {
         }
     }
 
-    if(priceID==null){
+    if (priceID == null) {
         console.log('did not select any amount');
 
-    }else{
+    } else {
         if ($('#monthCheckbox').is(':checked') && priceID == 'price_1GtQGvECm5TjDc1IFaRIJpCx') {
             payMode = 'subscription'
         }
-    
+        var firstName = $('#first_name').val()
+        var lastName = $('#last_name').val()
+        var email = $('#email').val()
+        await $.get( "/donatedPeople", { name: firstName+" "+lastName, email:email }, function(data){
+            console.log(data);
+        });
+
         var stripe = Stripe('pk_test_853qy8se4d90x2LxszV5GAi700pL7qNzqY');
-        stripe.redirectToCheckout({
+        await stripe.redirectToCheckout({
                 lineItems: [{
                     price: priceID,
                     quantity: 1
@@ -33,8 +40,8 @@ const stripePayment = async () => {
                 // a successful payment.
                 // Instead use one of the strategies described in
                 // https://stripe.com/docs/payments/checkout/fulfillment
-                successUrl: window.location.origin+'/success',
-                cancelUrl: window.location.origin+'/cancel',
+                successUrl: window.location.origin + '/success',
+                cancelUrl: window.location.origin + '/cancel',
             })
             .then(function (result) {
                 if (result.error) {
@@ -47,12 +54,12 @@ const stripePayment = async () => {
     }
 
 
-    
+
 }
 
 const checkInput = () => {
 
-   
+
     if ($('#first_name').val() == "") {
         $("#first_name").removeClass("valid");
         $("#first_name").addClass("invalid");
@@ -73,7 +80,7 @@ const checkInput = () => {
         $("#lastNameLabel").css('color', '#00bfa5')
     }
 
-    if ($('#email').val() == "") {
+    if ($('#email').val() == ""||!validateEmail($('#email').val())) {
         $("#email").removeClass("valid");
         $("#email").addClass("invalid");
         $("#emailLabel").css('color', 'red')
@@ -84,18 +91,21 @@ const checkInput = () => {
     }
     if ($('#first_name').val() == "" || $('#last_name').val() == "" || $('#email').val() == "") {
 
-        
-    }else{
+
+    } else {
         stripePayment()
     }
 }
-
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
 $(document).ready(() => {
     $("#firstNameLabel").css('color', '#00bfa5')
     $("#lastNameLabel").css('color', '#00bfa5')
     $("#emailLabel").css('color', '#00bfa5')
-    
+
 
     $("#donationBTN").click(function () {
         //stripePayment(radios)
