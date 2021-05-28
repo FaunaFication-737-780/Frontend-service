@@ -108,5 +108,18 @@ router.get('/donatedPeople', (req, res) => {
 })
 
 
+//Calls FaaS that returns all donators
+router.get('/allDonators', (req, res) => {
+  //localhost 4000
+  request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/donators', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body) // Print the google web page.
+      res.send(body)
+    }
+  })
+
+})
+
+
 
 module.exports = router
