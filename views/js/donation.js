@@ -2,6 +2,7 @@ const stripePayment = async () => {
     var priceID
     var payMode = 'payment'
     var radios = document.getElementsByName('amount');
+    
 
     console.log($('#first_name').val());
     for (var i = 0, length = radios.length; i < length; i++) {
@@ -13,16 +14,24 @@ const stripePayment = async () => {
         }
     }
 
-    if(priceID==null){
+    if (priceID == null) {
         console.log('did not select any amount');
 
-    }else{
+    } else {
         if ($('#monthCheckbox').is(':checked') && priceID == 'price_1GtQGvECm5TjDc1IFaRIJpCx') {
             payMode = 'subscription'
         }
-    
+        var firstName = $('#first_name').val()
+        var lastName = $('#last_name').val()
+        var email = $('#email').val()
+        // await $.get( "/donatedPeople", { name: firstName+" "+lastName, email:email }, function(data){
+        //     console.log(data);
+        // });
+        sessionStorage.setItem('name', firstName+" "+lastName)
+        sessionStorage.setItem('email', email)
+
         var stripe = Stripe('pk_test_853qy8se4d90x2LxszV5GAi700pL7qNzqY');
-        stripe.redirectToCheckout({
+        await stripe.redirectToCheckout({
                 lineItems: [{
                     price: priceID,
                     quantity: 1
@@ -33,8 +42,8 @@ const stripePayment = async () => {
                 // a successful payment.
                 // Instead use one of the strategies described in
                 // https://stripe.com/docs/payments/checkout/fulfillment
-                successUrl: window.location.origin+'/success',
-                cancelUrl: window.location.origin+'/cancel',
+                successUrl: window.location.origin + '/success',
+                cancelUrl: window.location.origin + '/cancel',
             })
             .then(function (result) {
                 if (result.error) {
@@ -47,12 +56,12 @@ const stripePayment = async () => {
     }
 
 
-    
+
 }
 
 const checkInput = () => {
 
-   
+
     if ($('#first_name').val() == "") {
         $("#first_name").removeClass("valid");
         $("#first_name").addClass("invalid");
@@ -73,7 +82,7 @@ const checkInput = () => {
         $("#lastNameLabel").css('color', '#00bfa5')
     }
 
-    if ($('#email').val() == "") {
+    if ($('#email').val() == ""||!validateEmail($('#email').val())) {
         $("#email").removeClass("valid");
         $("#email").addClass("invalid");
         $("#emailLabel").css('color', 'red')
@@ -84,23 +93,106 @@ const checkInput = () => {
     }
     if ($('#first_name').val() == "" || $('#last_name').val() == "" || $('#email').val() == "") {
 
-        
-    }else{
+
+    } else {
         stripePayment()
     }
 }
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function json2array(json) {
+    var result = [];
+    var keys = Object.keys(json);
+    keys.forEach(function (key) {
+        result.push(json[key]);
+    });
+    return result;
+}
+
+let myJson
+const userAction = async () => {
+    //$("#species").empty()
+    const response = await fetch('/allDonators');
+    myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    let json = json2array(myJson)
+    console.log(json)
+    json[0].forEach(element => {
+        $("#donators-list").append("<p class='donator'>" + "test" + "</p>"
+        )
+    })
+}
+
+
+
+
+
+
+
+
+/*
+let myJson
+const userAction = async () => {
+    $("#species").empty()
+    const response = await fetch('/allSpeciesInfoData');
+    myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)
+
+    function json2array(json) {
+        var result = [];
+        var keys = Object.keys(json);
+        keys.forEach(function (key) {
+            result.push(json[key]);
+        });
+        return result;
+    }
+    let json = json2array(myJson)
+    console.log(json)
+
+
+    json[0].forEach(element => {
+        var imageId = "image" + element._id
+        var nameId = "name" + element._id
+        var pID = "p" + element._id
+        $("#species").append(
+            $("<div class='card small center'></div>").html(
+                $("<div class='card-image waves-effect waves-block waves-light'>" +
+                    "<div class='activator'>" + "<img" + " id='" + imageId + "' src=" + element.image + "'style='border:none; width:100px />" + "</div>" +
+                    "</div>" +
+                    "<div class='card-content'>" +
+                    "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
+                    "</div>" +
+                    "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>" +
+                    "</div>"
+                ))
+        )
+    })
+ */
+
+
+
+
+
 
 
 $(document).ready(() => {
     $("#firstNameLabel").css('color', '#00bfa5')
     $("#lastNameLabel").css('color', '#00bfa5')
     $("#emailLabel").css('color', '#00bfa5')
-    
+
 
     $("#donationBTN").click(function () {
         //stripePayment(radios)
         checkInput()
 
     })
+
+    userAction()
+
+
 
 })

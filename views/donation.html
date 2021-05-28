@@ -73,33 +73,33 @@
         <form class="col s10 offset-s1">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Your first name" id="first_name" type="text" class="valid" >
+                    <input placeholder="Your first name" id="first_name" type="text" class="valid">
                     <label id="firstNameLabel" for="first_name" style="font-size: 5mm;">First Name (required)</label>
-                    <span class="helper-text" data-error="First name is required">Helper text</span>
+                    <span class="helper-text" data-error="First name is required"></span>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="Your last name" id="last_name" type="text" class="valid" >
+                    <input placeholder="Your last name" id="last_name" type="text" class="valid">
                     <label id="lastNameLabel" for="last_name" style="font-size: 5mm;">Last Name (required)</label>
-                    <span class="helper-text" data-error="Last name is required" >Helper text</span>
+                    <span class="helper-text" data-error="Last name is required"></span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Your email address" id="email" type="email" class="valid" >
+                    <input placeholder="Your email address" id="email" type="email" class="valid">
                     <label id="emailLabel" for="email" style="font-size: 5mm;">Email (required)</label>
-                    <span class="helper-text" data-error="Email is required">Helper text</span>
+                    <span class="helper-text" data-error="Email is required or your input is bad formatted"></span>
                 </div>
                 <div class="input-field col s6">
-                    
-                    <input placeholder="Your mobile phone number" id="phoneNumber" type="number" >
+
+                    <input placeholder="Your mobile phone number" id="phoneNumber" type="number">
                     <label for="phoneNumber" style="font-size: 5mm;color: #00bfa5;">Phone number</label>
                 </div>
             </div>
 
-           
-               
-           
+
+
+
 
             <div class="row">
                 <div class="col s6">
@@ -134,14 +134,14 @@
 
                 <div class="col s6">
                     <p style="font-size: 5mm;color: #00bfa5;">
-                        Would you consider to donate us Monthly?
+                        Would you like to setup a recurring monthly donation?
                     </p>
                     <p>
                         <label>
-                          <input type="checkbox" id="monthCheckbox"/>
-                          <span style="font-size: 5mm;">Yes</span>
+                            <input type="checkbox" id="monthCheckbox" />
+                            <span style="font-size: 5mm;">Yes</span>
                         </label>
-                      </p>
+                    </p>
                 </div>
             </div>
 
@@ -159,7 +159,30 @@
 
 
 
+    <div class="row">
+        <div class="col s10 offset-s1" style="background-color: #00bfa5;border-radius: 30px;">
+            <!-- <div class="row">
+                <div class="col col s10 offset-s1" style="min-height: 30vh;background-color: aliceblue;margin-top: 5vh;margin-bottom: 5vh;">
+                
+                
+                </div>
+            </div> -->
+            <div style="min-height: 30vh;background-color: aliceblue;margin-top: 3vh;margin-bottom: 3vh;margin-left: 2vh;margin-right: 2vh;font-family: 'Caveat', cursive;max-height: 40vh;">
+                <p style="word-wrap: break-word;margin-left: 10%;font-size: 7mm;">
+                    Thanks for all the support:
+                    </p>
+                <marquee width="80%" direction="up" height="100%"  id='donators-list' style="font-size: 5mm;margin-left: 10%;max-height: 30vh;">
+                    <!--need to compensate for small dataset and replay-->
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
 
+
+                </marquee>
+            </div>
+        </div>
+    </div>
 
 
 
