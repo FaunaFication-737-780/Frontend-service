@@ -71,6 +71,9 @@ const getData = (speciesName) => {
 //API Fetch and Set
 let myJson
 const userAction = async () => {
+    
+
+
     $("#species").empty()
     const response = await fetch('/allSpeciesInfoData');
     myJson = await response.json(); //extract JSON from the http response
@@ -108,7 +111,14 @@ const userAction = async () => {
     })
 
     //sets default landing card for species
-    getData(camelize(json[0][0].name))
+
+
+    //getData(camelize(json[0][0].name))
+
+
+    $('#mapBTN').click(function(){
+        getData(camelize(json[0][0].name))
+    })
     document.getElementById("species-name").innerText = json[0][0].name
     document.getElementById("species-pop").innerText = ("Population trend:   " + json[0][0].popTrend)
     document.getElementById("species-pic").src = json[0][0].image
@@ -126,8 +136,19 @@ const userAction = async () => {
             //document.cookie= ("name=" + myParent.firstElementChild.innerHTML)
             //console.log(document.cookie)
             //console.log(myParent)
+            
+            //when click a new animal, go to first tab
+            var el = document.getElementById("tabs");
+            var instance = M.Tabs.getInstance(el);
+            instance.select('test1');
+
+            
+            $('#mapBTN').off("click")
             let species = myParent.firstElementChild.innerHTML
-            getData(camelize(species))
+            $('#mapBTN').click(function(){
+                getData(camelize(species))
+            })
+            
 
             json[0].forEach(element => {
                 if (species == element.name) {
@@ -212,7 +233,8 @@ $(document).ready(() => {
 
     //init tabs
     $('.tabs').tabs();
-
+   
+    
     userAction()
 
     const socket = io()
