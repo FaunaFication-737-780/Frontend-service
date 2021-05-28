@@ -91,7 +91,7 @@ router.get('/donatedPeople', (req, res) => {
   let name = encodeURI(req.query.name)
   let email = encodeURI(req.query.email)
   //localhost for now just testing 
-  request('http://localhost:3002/donate/?name='+name+"&email="+email, function (error, result, body) {
+  request('https://realtime-db-service.us-south.cf.appdomain.cloud/donate?name='+name+"&email="+email, function (error, result, body) {
     if(error!=null){
       res.send(error)
     }else{
