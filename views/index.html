@@ -99,11 +99,12 @@
 
     <!--   Icon Section   -->
     <div class="row">
-      <h4 class="center header teal-text">Challenges WildLife are Facing</h4>
+      <h4 class="center header teal-text">Challenges WildLife are Facing</h4><div class="center"><audio src="assets/Audio_file0.mp3" id="myAudio" preload="auto" type="audio/mpeg"></audio><a class="btn-floating btn-small waves-effect waves-light red" onclick="togglePlay()"><i class="material-icons right">play_arrow</i>Speech</a></div>
       <blockquote class="center teal-text">From 2019-2020 Australia experienced the largest Bush Fire event ever and in total burned an estimated 18.6 million hectares of land and killed nearly 3 billion wild animals.</blockquote>
       <p>The impact of this event has worsened the outlook for struggling species with some researchers believing it has brought some species to extinction. With this event being so recent there is not enough up to date data to verify the true effect on the local flora and fauna yet many researchers claim the current figures are conservative at best. Since the majority of data publicly available is not current we are displaying data before the 2019/2020 Bushfires and thus in future there may be a major changes.</p>
       <blockquote class="center teal-text">Native species will struggle to recover due to invasive species devasting Australia's unique environment</blockquote>
-      <p>Due to Australia's lack of an Apex predator, the local wildlife is unaccustomed to invasive species such as feral cats and foxes and the numbers of invasive species cannot be regulated easily, leading to massive population growth and overconsumption.</p>
+        <div class="center"><audio src="assets/Audio_file1.mp3" id="myAudio1" preload="auto" type="audio/mpeg"></audio><a class="btn-floating btn-small waves-effect waves-light red" onclick="togglePlay1()"><i class="material-icons right">play_arrow</i>Speech</a></div>
+        <p>Due to Australia's lack of an Apex predator, the local wildlife is unaccustomed to invasive species such as feral cats and foxes and the numbers of invasive species cannot be regulated easily, leading to massive population growth and overconsumption.</p>
       <p>For years the government has implemented hunting and poisoning programs in attempt to regulate invasive species. However the species have never been truly wiped out and usually grow resistant to poisons and viruses over time leading to the population bouncing back.</p>
       <h5 class="teal-text center subheader">Invasive species in Australia</h5>
       <ul class="collapsible">
@@ -130,7 +131,7 @@
       </ul>
 
 
-      <h4 class="subheader center teal-text">How can we solve this issue?</h4>
+      <h4 class="subheader center teal-text">How can we solve this issue?</h4><div class="center"><audio src="assets/Audio_file2.mp3" id="myAudio2" preload="auto" type="audio/mpeg"></audio><a class="btn-floating btn-small waves-effect waves-light red" onclick="togglePlay2()"><i class="material-icons right">play_arrow</i></a></div>
       <p>To solve this issue accountability and awareness are important. Raising public awareness will motivate others to pitch in and potentially sway their political stance, leading to approval of policies that benefit this cause. This issue covers an entire continent and is brought about by a variety of factors, meaning that solving the issue requires action on an individual and bureaucratic level.</p>
 
   
@@ -195,6 +196,19 @@
     $('.collapsible').collapsible();
     //document.cookie = ("name=Quokka")
   });
+
+  function togglePlay() {
+      var myAudio = document.getElementById("myAudio");
+      return myAudio.paused ? myAudio.play() : myAudio.pause();
+  };
+  function togglePlay1() {
+      var myAudio1 = document.getElementById("myAudio1");
+      return myAudio1.paused ? myAudio1.play() : myAudio1.pause();
+  };
+  function togglePlay2() {
+      var myAudio2 = document.getElementById("myAudio2");
+      return myAudio2.paused ? myAudio2.play() : myAudio2.pause();
+  };
 
 </script>
 
