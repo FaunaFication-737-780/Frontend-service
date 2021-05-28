@@ -3,8 +3,9 @@ const AdminBroExpress = require('@admin-bro/express')
 const AdminBroMongoose = require('@admin-bro/mongoose')
 
 //use user now for example
-const User = require('./models/userModel')
+//const User = require('./models/userModel')
 require('./models/speciesInfoModel')
+require('./models/donationModel')
 const mongoose = require('mongoose')
 const favicon = require('./models/logos')
 
