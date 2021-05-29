@@ -140,7 +140,7 @@ const userAction = async () => {
             //when click a new animal, go to first tab
             var el = document.getElementById("tabs");
             var instance = M.Tabs.getInstance(el);
-            instance.select('test1');
+            instance.select('info-tab');
 
             
             $('#mapBTN').off("click")
