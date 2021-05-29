@@ -99,7 +99,7 @@ const userAction = async () => {
         $("#species").append(
             $("<div class='card small center'></div>").html(
                 $("<div class='card-image waves-effect waves-block waves-light'>" +
-                    "<div class='activator'>" + "<img" + " id='" + imageId + "' src=" + element.image + "'style='border:none; width:100px />" + "</div>" +
+                    "<div>" + "<img" + " id='" + imageId + "' src=" + element.image +"'style='border:none; width:100px />" + "</div>" +
                     "</div>" +
                     "<div class='card-content'>" +
                     "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
@@ -233,6 +233,9 @@ $(document).ready(() => {
 
     //init tabs
     $('.tabs').tabs();
+
+    //init modal
+    $('.modal').modal();
    
     
     userAction()
