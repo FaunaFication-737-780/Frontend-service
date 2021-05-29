@@ -30,7 +30,7 @@ const getData = (speciesName) => {
             container._leaflet_id = null;
         }
 
-        
+
         // create boundary box
         var boundaryBox = data.data.features[0].geometry.bbox
         console.log('bbox is ' + boundaryBox);
@@ -47,7 +47,7 @@ const getData = (speciesName) => {
         ]
         console.log('fixed box' + typeof fixedBox);
 
-        $('#mapLoader').replaceWith(' <div id="mapid" class="center-block"></div>' );
+        $('#mapLoader').replaceWith(' <div id="mapid" class="center-block"></div>');
         let map = new L.map('mapid').setView([-27.833, 133.583], 4);
 
         //create the map
@@ -72,7 +72,7 @@ const getData = (speciesName) => {
 //API Fetch and Set
 let myJson
 const userAction = async () => {
-    
+
 
 
     $("#species").empty()
@@ -117,13 +117,14 @@ const userAction = async () => {
     //getData(camelize(json[0][0].name))
 
 
-    $('#mapBTN').click(function(){
+    $('#mapBTN').click(function () {
         getData(camelize(json[0][0].name))
     })
     document.getElementById("species-name").innerText = json[0][0].name
     document.getElementById("species-pop").innerText = ("Population trend:   " + json[0][0].popTrend)
     document.getElementById("species-pic").src = json[0][0].image
     document.getElementById("species-status").innerText = json[0][0].status
+    $('#species-pic').show()
 
 
 
@@ -137,7 +138,7 @@ const userAction = async () => {
             //document.cookie= ("name=" + myParent.firstElementChild.innerHTML)
             //console.log(document.cookie)
             //console.log(myParent)
-            
+
             $('#mapid').replaceWith('<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>');
 
 
@@ -146,22 +147,27 @@ const userAction = async () => {
             var instance = M.Tabs.getInstance(el);
             instance.select('test1');
 
-            
-            
+
+
             $('#mapBTN').off("click")
             let species = myParent.firstElementChild.innerHTML
-            $('#mapBTN').click(function(){
+            $('#mapBTN').click(function () {
                 getData(camelize(species))
             })
-            
+
 
             json[0].forEach(element => {
                 if (species == element.name) {
+                    //when user select new specie, show preloader and hide image 
+                    $('#species-pic').hide()
+                    $('.page-loader').fadeIn(0);
+                    $('.page-loader').fadeOut(700);
+
                     document.getElementById("species-name").innerText = element.name
                     document.getElementById("species-pop").innerText = ("Population trend:   " + element.popTrend)
                     document.getElementById("species-pic").src = element.image
                     document.getElementById("species-status").innerText = element.status
-
+                    $('#species-pic').show()
 
 
                 }
@@ -238,8 +244,12 @@ $(document).ready(() => {
 
     //init tabs
     $('.tabs').tabs();
-   
-    
+
+    //while window loading show the preloader
+    $(window).on('load', function () {
+        $('.page-loader').fadeOut(1500);
+    })
+
     userAction()
 
     const socket = io()
