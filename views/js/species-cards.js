@@ -13,7 +13,7 @@ function camelize(str) {
 }
 
 //set up the map
-let map = new L.map('mapid').setView([-27.833, 133.583], 4);
+// let map = new L.map('mapid').setView([-27.833, 133.583], 4);
 //gets geodata and displays on leaflet
 const getData = (speciesName) => {
     var geoData;
@@ -30,7 +30,7 @@ const getData = (speciesName) => {
             container._leaflet_id = null;
         }
 
-        let map = new L.map('mapid').setView([-27.833, 133.583], 4);
+        
         // create boundary box
         var boundaryBox = data.data.features[0].geometry.bbox
         console.log('bbox is ' + boundaryBox);
@@ -47,7 +47,8 @@ const getData = (speciesName) => {
         ]
         console.log('fixed box' + typeof fixedBox);
 
-
+        $('#mapLoader').replaceWith(' <div id="mapid" class="center-block"></div>' );
+        let map = new L.map('mapid').setView([-27.833, 133.583], 4);
 
         //create the map
         L.tileLayer(
@@ -137,11 +138,15 @@ const userAction = async () => {
             //console.log(document.cookie)
             //console.log(myParent)
             
+            $('#mapid').replaceWith('<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>');
+
+
             //when click a new animal, go to first tab
             var el = document.getElementById("tabs");
             var instance = M.Tabs.getInstance(el);
             instance.select('test1');
 
+            
             
             $('#mapBTN').off("click")
             let species = myParent.firstElementChild.innerHTML

@@ -97,7 +97,20 @@
                     <h5 class="center subheader teal-text" id="species-status"></h5>
                     <img src="" class="center-block" id="species-pic" height="600" width="600"/>
                 </div>
-                <div id="test2" class="col s12"><div id="mapid" class="center-block"></div></div>
+                <div id="test2" class="col s12">
+                    <!-- <div id="mapid" class="center-block"></div> -->
+                    <div class="preloader-wrapper big active" id="mapLoader">
+                        <div class="spinner-layer spinner-blue-only">
+                          <div class="circle-clipper left">
+                            <div class="circle"></div>
+                          </div><div class="gap-patch">
+                            <div class="circle"></div>
+                          </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
                 <div id="test3" class="col s12">
                     <h5 class="center subheader teal-text">Threats:</h5>
                     <ul class="collection center" id="species-threats">
