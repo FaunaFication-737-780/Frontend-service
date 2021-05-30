@@ -121,5 +121,18 @@ router.get('/allDonators', (req, res) => {
 })
 
 
+//Calls FaaS that returns all charities
+router.get('/allCharities', (req, res) => {
+  //localhost 4000
+  request('https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/getAllCharities', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //send the charities data
+      res.send(body)
+    }
+  })
+
+})
+
+
 
 module.exports = router
