@@ -71,6 +71,9 @@ const getData = (speciesName) => {
 //API Fetch and Set
 let myJson
 const userAction = async () => {
+    
+
+
     $("#species").empty()
     const response = await fetch('/allSpeciesInfoData');
     myJson = await response.json(); //extract JSON from the http response
@@ -94,9 +97,9 @@ const userAction = async () => {
         var nameId = "name" + element._id
         var pID = "p" + element._id
         $("#species").append(
-            $("<div class='card small center'></div>").html(
+            $("<div class='card medium center'></div>").html(
                 $("<div class='card-image waves-effect waves-block waves-light'>" +
-                    "<div class='activator'>" + "<img" + " id='" + imageId + "' src=" + element.image + "'style='border:none; width:100px />" + "</div>" +
+                    "<div>" + "<img class='responsive-img'" + " id='" + imageId + "' src=" + element.image +"'style='border:none; width:100px />" + "</div>" +
                     "</div>" +
                     "<div class='card-content'>" +
                     "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
@@ -108,7 +111,14 @@ const userAction = async () => {
     })
 
     //sets default landing card for species
-    getData(camelize(json[0][0].name))
+
+
+    //getData(camelize(json[0][0].name))
+
+
+    $('#mapBTN').click(function(){
+        getData(camelize(json[0][0].name))
+    })
     document.getElementById("species-name").innerText = json[0][0].name
     document.getElementById("species-pop").innerText = ("Population trend:   " + json[0][0].popTrend)
     document.getElementById("species-pic").src = json[0][0].image
@@ -126,8 +136,20 @@ const userAction = async () => {
             //document.cookie= ("name=" + myParent.firstElementChild.innerHTML)
             //console.log(document.cookie)
             //console.log(myParent)
+            
+            //when click a new animal, go to first tab
+            var el = document.getElementById("tabs");
+            var instance = M.Tabs.getInstance(el);
+            instance.select('info-tab');
+
+
+
+            $('#mapBTN').off("click")
             let species = myParent.firstElementChild.innerHTML
-            getData(camelize(species))
+            $('#mapBTN').click(function(){
+                getData(camelize(species))
+            })
+            
 
             json[0].forEach(element => {
                 if (species == element.name) {
@@ -192,15 +214,16 @@ const newSpeciesInfo = (jsonData) => {
     console.log('this is insert from socket');
 
     $("#species").append(
-        $("<div class='card small center'></div>").html(
-            $("<div class='card-image waves-effect waves-block waves-light'>" +
-                "<div class='activator'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + "'style='border:none; width:100px />" + "</div>" +
+        $("<div class=' col s12 m7' </div>").html(
+            $("<div class='card center'>" +
+                "<div class=' waves-effect waves-block waves-light'>" +
+                "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + " />" + "</div>" +
                 "</div>" +
                 "<div class='card-content'>" +
                 "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + jsonData.name + "</a>" + "<p" + " id='" + pID + "'>" + jsonData.status + "</p>" +
                 "</div>" +
                 "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + jsonData.habitat + "</span>" +
-                "</div>"
+                "</div>" +"</div>"
             ))
     )
 }
@@ -213,6 +236,10 @@ $(document).ready(() => {
     //init tabs
     $('.tabs').tabs();
 
+    //init modal
+    $('.modal').modal();
+   
+    
     userAction()
 
     const socket = io()
