@@ -18,12 +18,21 @@ const socketIo = (io,app) => {
 
         })
 
-        //realtime database update
+        //realtime database update for animals 
         app.post('/updateData', (req,res)=>{
             var data = req.body
             console.log('the data from backend is ');
             console.log(data);
             io.emit('updateData',data)
+            res.send("Data received")
+        })
+
+        //realtime database update for donators 
+        app.post('/updateDonator', (req,res)=>{
+            var data = req.body
+            console.log('the data from backend is ');
+            console.log(data);
+            io.emit('updateDonator',data)
             res.send("Data received")
         })
         
