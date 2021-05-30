@@ -14,8 +14,8 @@
 
 
 .img {
-    width:100%;
-    height:100%
+    width: 100%;
+    height: 100%
 }
 
 .page-loader {
@@ -27,31 +27,34 @@
     right: 0;
     bottom: 0;
     margin: auto;
-    
-  
-  
-  }
-  
-  #mapLoader {
-  
-   margin-right: 25%;
-  
-  
-  }
+
+
+
+}
+
+#mapLoader {
+
+    margin-top: 10%;
+
+
+}
 
 
 .species_hello_message {
-    
-    
-    background: hsla(217, 100%, 50%, 0.431);
-    -webkit-text-fill-color: white;
-  margin-top: 5%;
-  margin-bottom: 10%;
-   
-    
+
+
+    background: hsla(160, 92%, 30%, 0.7);
+    -webkit-text-fill-color:white;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 15%;
+    border: #354d15 solid 3px;
+
+
 }
-.species-info-card{
-    
+
+.species-info-card {
+    min-height: 900px;
 }
 
 #species_hello_message_title {
@@ -62,19 +65,20 @@
 
 
 }
-.modal-trigger{
-   
+
+.modal-trigger {
+
     bottom: 0;
     margin-left: 20%;
     height: auto;
-    width: auto ;
-    max-lines: 1;
+    width: auto;
+
 }
 
 #species_hello_message_text {
-    font-size: auto;
+    font-size: 5mm;
     height: auto;
-    
+
 }
 
 #species_refer_message {
@@ -87,7 +91,8 @@
     font-style: oblique;
     font-family: 'Open Sans', sans-serif;
 }
-#species_refer_message_author{
+
+#species_refer_message_author {
     text-align: right;
 }
 
