@@ -5,6 +5,9 @@
 // });
 
 
+//this count used for map the cards
+var count = 1
+
 //convert string to camel case used to convert SpeciesIntro name into referencable format in API
 function camelize(str) {
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
@@ -13,7 +16,7 @@ function camelize(str) {
 }
 
 //set up the map
-let map = new L.map('mapid').setView([-27.833, 133.583], 4);
+//let map = new L.map('mapid').setView([-27.833, 133.583], 4);
 //gets geodata and displays on leaflet
 const getData = (speciesName) => {
     var geoData;
@@ -30,7 +33,7 @@ const getData = (speciesName) => {
             container._leaflet_id = null;
         }
 
-        let map = new L.map('mapid').setView([-27.833, 133.583], 4);
+        
         // create boundary box
         var boundaryBox = data.data.features[0].geometry.bbox
         console.log('bbox is ' + boundaryBox);
@@ -48,7 +51,8 @@ const getData = (speciesName) => {
         console.log('fixed box' + typeof fixedBox);
 
 
-
+        $('#mapLoader').replaceWith(' <div id="mapid" class="center-block"></div>');
+        let map = new L.map('mapid').setView([-27.833, 133.583], 4);
         //create the map
         L.tileLayer(
             'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -97,16 +101,18 @@ const userAction = async () => {
         var nameId = "name" + element._id
         var pID = "p" + element._id
         $("#species").append(
-            $("<div class='card medium center'></div>").html(
-                $("<div class='card-image waves-effect waves-block waves-light'>" +
-                    "<div>" + "<img class='responsive-img'" + " id='" + imageId + "' src=" + element.image +"'style='border:none; width:100px />" + "</div>" +
-                    "</div>" +
-                    "<div class='card-content'>" +
-                    "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
-                    "</div>" +
-                    "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>" +
-                    "</div>"
-                ))
+            $("<div class='row species-card-modal'"+
+            "<div class=' col s12'>"+
+            "<div class='card center'>" +
+            "<div class=' waves-effect waves-block waves-light'>" +
+            "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + element.image + " />" + "</div>" +
+            "</div>" +
+            "<div class='card-content'>" +
+            "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
+            "</div>" +
+            "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>" +
+            "</div>" +"</div> </div></div>")
+                
         )
     })
 
@@ -117,6 +123,8 @@ const userAction = async () => {
 
 
     $('#mapBTN').click(function(){
+        $('#mapid').replaceWith('<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>');
+
         getData(camelize(json[0][0].name))
     })
     document.getElementById("species-name").innerText = json[0][0].name
@@ -124,7 +132,7 @@ const userAction = async () => {
     document.getElementById("species-pic").src = json[0][0].image
     document.getElementById("species-status").innerText = json[0][0].status
 
-
+    $('#species-pic').show()
 
 
     //Sets cookie to onclick to pass to next page
@@ -136,29 +144,41 @@ const userAction = async () => {
             //document.cookie= ("name=" + myParent.firstElementChild.innerHTML)
             //console.log(document.cookie)
             //console.log(myParent)
-            
+            $('#mapid').replaceWith('<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>');
+
             //when click a new animal, go to first tab
-            var el = document.getElementById("tabs");
-            var instance = M.Tabs.getInstance(el);
+            var tabs = document.getElementById("tabs");
+            var instance = M.Tabs.getInstance(tabs);
             instance.select('info-tab');
 
+            var modal = document.getElementById("species-model")
+            var instance = M.Modal.getInstance(modal);
+            instance.close();
 
 
             $('#mapBTN').off("click")
             let species = myParent.firstElementChild.innerHTML
             $('#mapBTN').click(function(){
+                $('#mapid').replaceWith('<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>');
+
                 getData(camelize(species))
             })
             
 
             json[0].forEach(element => {
                 if (species == element.name) {
+
+                    //when user select new specie, show preloader and hide image 
+                    $('#species-pic').hide()
+                    $('.page-loader').fadeIn(0);
+                    $('.page-loader').fadeOut(700);
+
                     document.getElementById("species-name").innerText = element.name
                     document.getElementById("species-pop").innerText = ("Population trend:   " + element.popTrend)
                     document.getElementById("species-pic").src = element.image
                     document.getElementById("species-status").innerText = element.status
 
-
+                    $('#species-pic').show()
 
                 }
             })
@@ -214,17 +234,18 @@ const newSpeciesInfo = (jsonData) => {
     console.log('this is insert from socket');
 
     $("#species").append(
-        $("<div class=' col s12 m7' </div>").html(
-            $("<div class='card center'>" +
-                "<div class=' waves-effect waves-block waves-light'>" +
-                "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + " />" + "</div>" +
-                "</div>" +
-                "<div class='card-content'>" +
-                "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + jsonData.name + "</a>" + "<p" + " id='" + pID + "'>" + jsonData.status + "</p>" +
-                "</div>" +
-                "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + jsonData.habitat + "</span>" +
-                "</div>" +"</div>"
-            ))
+        $("<div class='row species-card-modal'"+
+        "<div class=' col s12'>"+
+        "<div class='card center'>" +
+        "<div class=' waves-effect waves-block waves-light'>" +
+        "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + " />" + "</div>" +
+        "</div>" +
+        "<div class='card-content'>" +
+        "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + jsonData.name + "</a>" + "<p" + " id='" + pID + "'>" + jsonData.status + "</p>" +
+        "</div>" +
+        "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + jsonData.habitat + "</span>" +
+        "</div>" +"</div> </div></div>")
+            
     )
 }
 
@@ -239,11 +260,16 @@ $(document).ready(() => {
     //init modal
     $('.modal').modal();
    
+    //while window loading
+    $(window).on('load', function () {
+        $('.page-loader').fadeOut(1500);
+    })
     
     userAction()
 
     const socket = io()
     socket.on('updateData', (data) => {
+        
 
         if (data.type == 'insert') {
             newSpeciesInfo(data.data)
