@@ -12,8 +12,9 @@
 }
 
 .donation_hello_message {
-    position: absolute;
-    bottom: 0px;
+    position: relative;
+    margin-top: 5%;
+    margin-bottom: 10%;
     background: hsla(168, 100%, 50%, 0.157);
     -webkit-text-fill-color: white
 }
