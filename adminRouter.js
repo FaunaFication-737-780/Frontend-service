@@ -9,6 +9,7 @@ require('./models/donationModel')
 const mongoose = require('mongoose')
 const favicon = require('./models/logos')
 
+require('dotenv').config();
 
 AdminBro.registerAdapter(AdminBroMongoose)
 
@@ -36,8 +37,8 @@ const AdminBroOptions = {
 }
 
 const ADMIN = {
-    email: process.env.ADMIN_EMAIL || "admin@example.com",
-    password: process.env.ADMIN_PASSWORD || "123456"
+    email: process.env.ADMIN_USERNAME,
+    password: process.env.ADMIN_PASSWORD
 }
 
 const adminBro = new AdminBro(AdminBroOptions)
