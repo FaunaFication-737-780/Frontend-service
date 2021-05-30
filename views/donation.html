@@ -92,7 +92,7 @@
                 </div>
                 <div class="input-field col s6">
 
-                    <input placeholder="Your mobile phone number" id="phoneNumber" type="number">
+                    <input placeholder="Your mobile phone number" id="phoneNumber" type="number" class="valid">
                     <label for="phoneNumber" style="font-size: 5mm;color: #00bfa5;">Phone number</label>
                 </div>
             </div>
@@ -167,19 +167,23 @@
                 
                 </div>
             </div> -->
-            <div style="min-height: 30vh;background-color: aliceblue;margin-top: 3vh;margin-bottom: 3vh;margin-left: 2vh;margin-right: 2vh;font-family: 'Caveat', cursive;max-height: 40vh;">
-                <p style="word-wrap: break-word;margin-left: 10%;font-size: 7mm;">
+            <div style="min-height: 30vh;background-color: aliceblue;margin-top: 3vh;margin-bottom: 3vh;margin-left: 2vh;margin-right: 2vh;font-family: 'Caveat', cursive;">
+                <div style="margin-left: 10%;font-size: 7mm;min-height: 10vh;position: relative;">
                     Thanks for all the support:
-                    </p>
-                <marquee width="80%" direction="up" height="100%"  id='donators-list' style="font-size: 5mm;margin-left: 10%;max-height: 30vh;">
+
+                    <div class="row " style="position:relative; ">
+                        <div class="col s11 donators-collection"></div>
+                      
+                    </div>
+                </div>
+                <!-- <marquee width="80%" direction="up" height="100%"  id='donators-list' style="font-size: 5mm;margin-left: 10%;max-height: 30vh;"> -->
                     <!--need to compensate for small dataset and replay-->
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
+
+                   
+                    
 
 
-                </marquee>
+                <!-- </marquee> -->
             </div>
         </div>
     </div>
@@ -225,6 +229,7 @@
     <script src="js/materialize.js"></script>
     <script src="./js/donation.js"></script>
     <script src="https://js.stripe.com/v3"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
 
 
