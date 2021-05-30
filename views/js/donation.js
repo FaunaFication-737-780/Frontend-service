@@ -218,7 +218,14 @@ $(document).ready(() => {
 
 
 
+    const socket = io()
+    socket.on('updateDonator', (data) => {
+        var result = `${data.data.name} donated at ${getDateDifferent(new Date(data.data.date))} before`
+        $(".donators-collection").prepend("<p class='donator'>" + result+ "</p>")
 
+      console.log(data);
+       
+    })
 
 
     $("#donationBTN").click(function () {
