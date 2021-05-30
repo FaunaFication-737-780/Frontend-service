@@ -5,6 +5,9 @@
 // });
 
 
+//this count used for map the cards
+var count = 1
+
 //convert string to camel case used to convert SpeciesIntro name into referencable format in API
 function camelize(str) {
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
@@ -98,16 +101,18 @@ const userAction = async () => {
         var nameId = "name" + element._id
         var pID = "p" + element._id
         $("#species").append(
-            $("<div class='card medium center'></div>").html(
-                $("<div class='card-image waves-effect waves-block waves-light'>" +
-                    "<div>" + "<img class='responsive-img'" + " id='" + imageId + "' src=" + element.image +"'style='border:none; width:100px />" + "</div>" +
-                    "</div>" +
-                    "<div class='card-content'>" +
-                    "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
-                    "</div>" +
-                    "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>" +
-                    "</div>"
-                ))
+            $("<div class='row species-card-modal'"+
+            "<div class=' col s12'>"+
+            "<div class='card center'>" +
+            "<div class=' waves-effect waves-block waves-light'>" +
+            "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + element.image + " />" + "</div>" +
+            "</div>" +
+            "<div class='card-content'>" +
+            "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + element.name + "</a>" + "<p" + " id='" + pID + "'>" + element.status + "</p>" +
+            "</div>" +
+            "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + element.habitat + "</span>" +
+            "</div>" +"</div> </div></div>")
+                
         )
     })
 
@@ -229,17 +234,18 @@ const newSpeciesInfo = (jsonData) => {
     console.log('this is insert from socket');
 
     $("#species").append(
-        $("<div class=' col s12 m7' </div>").html(
-            $("<div class='card center'>" +
-                "<div class=' waves-effect waves-block waves-light'>" +
-                "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + " />" + "</div>" +
-                "</div>" +
-                "<div class='card-content'>" +
-                "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + jsonData.name + "</a>" + "<p" + " id='" + pID + "'>" + jsonData.status + "</p>" +
-                "</div>" +
-                "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + jsonData.habitat + "</span>" +
-                "</div>" +"</div>"
-            ))
+        $("<div class='row species-card-modal'"+
+        "<div class=' col s12'>"+
+        "<div class='card center'>" +
+        "<div class=' waves-effect waves-block waves-light'>" +
+        "<div class='card-image'>" + "<img" + " id='" + imageId + "' src=" + jsonData.image + " />" + "</div>" +
+        "</div>" +
+        "<div class='card-content'>" +
+        "<a " + " id='" + nameId + "' class='card-title grey-text text-darken-4 species-redirect' href='#../species-cards.html'>" + jsonData.name + "</a>" + "<p" + " id='" + pID + "'>" + jsonData.status + "</p>" +
+        "</div>" +
+        "<div class='card-reveal'>" + "<span class='card-title grey-text text-darken-4'>" + jsonData.habitat + "</span>" +
+        "</div>" +"</div> </div></div>")
+            
     )
 }
 

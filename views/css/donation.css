@@ -15,8 +15,10 @@
     position: relative;
     margin-top: 5%;
     margin-bottom: 10%;
-    background: hsla(168, 100%, 50%, 0.157);
-    -webkit-text-fill-color: white
+    background: hsla(160, 92%, 30%, 0.7);
+    -webkit-text-fill-color: white;
+    border: #354d15a9 solid 2px;
+    border-radius: 3%;
 }
 
 #donation_hello_message_title {

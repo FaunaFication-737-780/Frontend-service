@@ -66,6 +66,10 @@
 
 }
 
+.modal{
+    max-width: 200mm;
+}
+
 .modal-trigger {
 
     bottom: 0;
