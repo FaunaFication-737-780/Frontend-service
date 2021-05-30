@@ -11,6 +11,38 @@
 
 }
 
+.donators-collection {
+    position: relative;
+    max-height: 25vh;
+    overflow-y: scroll;
+}
+
+
+html {
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #90A4AE;
+}
+
+.donators-collection::-webkit-scrollbar {
+    width: 11px;
+}
+
+.donators-collection {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.donators-collection::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+    border-radius: 6px;
+}
+
+.donators-collection::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+}
+
 .donation_hello_message {
     position: relative;
     margin-top: 5%;
@@ -41,7 +73,8 @@
     font-style: oblique;
     font-family: 'Open Sans', sans-serif;
 }
-#donation_refer_message_author{
+
+#donation_refer_message_author {
     text-align: right;
 }
 

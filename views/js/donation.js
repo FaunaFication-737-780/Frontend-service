@@ -2,7 +2,7 @@ const stripePayment = async () => {
     var priceID
     var payMode = 'payment'
     var radios = document.getElementsByName('amount');
-    
+
 
     console.log($('#first_name').val());
     for (var i = 0, length = radios.length; i < length; i++) {
@@ -27,7 +27,7 @@ const stripePayment = async () => {
         // await $.get( "/donatedPeople", { name: firstName+" "+lastName, email:email }, function(data){
         //     console.log(data);
         // });
-        sessionStorage.setItem('name', firstName+" "+lastName)
+        sessionStorage.setItem('name', firstName + " " + lastName)
         sessionStorage.setItem('email', email)
 
         var stripe = Stripe('pk_test_853qy8se4d90x2LxszV5GAi700pL7qNzqY');
@@ -82,7 +82,7 @@ const checkInput = () => {
         $("#lastNameLabel").css('color', '#00bfa5')
     }
 
-    if ($('#email').val() == ""||!validateEmail($('#email').val())) {
+    if ($('#email').val() == "" || !validateEmail($('#email').val())) {
         $("#email").removeClass("valid");
         $("#email").addClass("invalid");
         $("#emailLabel").css('color', 'red')
@@ -98,6 +98,7 @@ const checkInput = () => {
         stripePayment()
     }
 }
+
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
@@ -113,17 +114,48 @@ function json2array(json) {
 }
 
 let myJson
-const userAction = async () => {
+const getAllDonators = async () => {
     //$("#species").empty()
     const response = await fetch('/allDonators');
     myJson = await response.json(); //extract JSON from the http response
     // do something with myJson
     let json = json2array(myJson)
     console.log(json)
+    
     json[0].forEach(element => {
-        $("#donators-list").append("<p class='donator'>" + "test" + "</p>"
-        )
+        var text = `${element.name} donated at ${getDateDifferent(new Date(element.date))} before`
+        
+        
+        $(".donators-collection").prepend("<p class='donator'>" + text + "</p>")
+        // $('.donator').hide();
+        // $('.donator:lt(4)').show();
     })
+}
+
+const getDateDifferent = (dataDate) => {
+    var currentTimestamp = Date.now()
+    var currentDate = new Date(currentTimestamp);
+
+    var resultString = ""
+
+   
+    const diffTime = Math.abs(currentDate - dataDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diffHour = Math.ceil(diffTime / (1000 * 60 * 60 ));
+    const diffMin = Math.ceil(diffTime / (1000 * 60 ));
+    // console.log(diffTime + " milliseconds");
+    // console.log(diffDays + " days");
+
+    if (diffDays - 1 == 0) {
+        if(diffHour - 1 == 0){
+            return (diffMin - 1) + ' Mins'
+        }else{
+            return (diffHour -1) + ' Hours'
+        }
+    }
+
+    return (diffDays-1) + ' Days'
+
 }
 
 
@@ -185,13 +217,17 @@ $(document).ready(() => {
     $("#emailLabel").css('color', '#00bfa5')
 
 
+
+
+
+
     $("#donationBTN").click(function () {
         //stripePayment(radios)
         checkInput()
 
     })
 
-    userAction()
+    getAllDonators()
 
 
 
