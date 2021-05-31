@@ -25,5 +25,7 @@ var storeIntoDatabase = async () => {
 }
 $(document).ready(()=>{
     storeIntoDatabase()
+    //init the sidebar
+    $('.sidenav').sidenav();
 
 })

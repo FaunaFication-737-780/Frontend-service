@@ -11,7 +11,7 @@ const getAllCharities = async () => {
                 const elementNext = charitiesData[i + 1]
                 //set up the cards for one row
                 var appendElement = '<div class="row">' +
-                    ' <div class="col s4 offset-s2">' +
+                    ' <div class="col s12 m8 l5 offset-l1 offset-m2">' +
                     '<div class="card">' +
                     ' <div class="card-image">' +
                     '<img src="' + element.Image + '">' +
@@ -28,7 +28,7 @@ const getAllCharities = async () => {
                     ' </div>' +
                     ' </div>' +
                     '  </div>' +
-                    '  <div class="col s4">' +
+                    '  <div class="col s12 m8 l5 offset-m2">' +
                     '         <div class="card">' +
                     '    <div class="card-image">' +
                     '      <img src="' + elementNext.Image + '">' +
@@ -57,7 +57,7 @@ const getAllCharities = async () => {
 
                 var lastElement = 
                     '<div class="row">' +
-                    '<div class="col s4 offset-s2">' +
+                    '<div class="col s12 m8 l5 offset-l1 offset-m2">' +
                     ' <div class="card">' +
                     ' <div class="card-image">' +
                     '<img src="' + lastData.Image + '">' +
@@ -89,6 +89,8 @@ const getAllCharities = async () => {
 
 $(document).ready(() => {
 
+    //init the sidebar
+    $('.sidenav').sidenav();
     getAllCharities()
 
 })

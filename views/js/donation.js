@@ -199,6 +199,9 @@ $(document).ready(() => {
     //get all donators then display 
     getAllDonators()
 
+    //init the sidebar
+    $('.sidenav').sidenav();
+
 
 
 })
