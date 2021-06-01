@@ -6,14 +6,56 @@
  * Made By MaterializeCSS.com
  */
 
-img{
-  width: 10px;
-  height: 500px;
+h1{
+  text-align: center;
 }
-p{
-  height: 130px;
+h4{
+  text-align: center;
+}
+
+body{
+  background-image: url(../assets/blue-snow.png);
+}
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
   line-height: 2rem;
+}
+.charities-container{
+  min-height: 100vh;
+}
+.charities-container span{
+  background-color: #1e978ba4;
+  width: 100%;
+  
+}
+.header{
+
+  font-family: 'Pattaya', sans-serif;
+}
+
+.page-loader {
+
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+
+
+}
+.charities-container p{
+  color: rebeccapurple;
+  height: 130px;
   overflow-y: scroll;
+  size: 4mm;
+  line-height: 1.8rem;
 }
 
 
@@ -22,38 +64,30 @@ html {
   --thumbBG: #90A4AE;
 }
 
-p::-webkit-scrollbar {
+.charities-container p::-webkit-scrollbar {
   width: 11px;
 }
 
-p{
+.charities-container p{
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
 
-p::-webkit-scrollbar-track {
+.charities-container p::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
   border-radius: 6px;
 }
 
-p::-webkit-scrollbar-thumb {
+.charities-container p::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);
 }
 
-body{
-  background-image: url(../assets/pixel-heart.png);
+img{
+  width: 10px;
+  height: 500px;
 }
-footer p{
-  overflow: auto;
-}
-nav ul a,
-nav .brand-logo {
-  color: #444;
-}
-
-
 
 
 .sidenav-trigger {

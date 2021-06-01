@@ -27,6 +27,7 @@ describe("geodata api", function (){
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //expect(body).to.equals("Welcome")
+                //expect(body.name).to.equals("Quokka")
                 done()
             }
         })
@@ -41,6 +42,7 @@ describe("SpeciesInfo FaaS", function (){
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //expect(body).to.equals("Welcome")
+
                 done()
             }
         })
@@ -51,7 +53,7 @@ describe("SpeciesInfo FaaS", function (){
 //Iterate through all entries to ensure no missing data
 //ensure validity of data for each
 describe("Single species FaaS", function (){
-    var url = "https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo?name=Quokka"
+    var url = "https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/getOneSpeciesInfo?name=Agile%20Wallaby"
     it('returns status 200 to check if api works', function (done) {
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -68,6 +70,21 @@ describe("Single species FaaS", function (){
 //maybe create an endpoint on server to get logs of latest changes idk
 describe("Test livedata endpoint", function (){
     var url = "https://realtime-db-service.us-south.cf.appdomain.cloud/"
+    it('returns status 200 to check if api works', function (done) {
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //expect(body).to.equals("SIT737&SIT780 Backend service")
+                done()
+            }
+        })
+    });
+})
+
+
+//TODO
+//maybe create an endpoint on server to get logs of latest changes idk
+describe("Test Watson Query", function (){
+    var url = ""
     it('returns status 200 to check if api works', function (done) {
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {

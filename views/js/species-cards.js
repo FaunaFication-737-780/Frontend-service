@@ -40,6 +40,7 @@ const getData = (speciesName) => {
         var fixedBox = []
 
 
+        //set the two lat-lon point for the boundary by bbox
         boundaryBox.forEach(element => {
             console.log('box' + element);
 
@@ -51,6 +52,9 @@ const getData = (speciesName) => {
         console.log('fixed box' + typeof fixedBox);
 
 
+        //create the map
+        //remove the load if we have all data ready
+        //replace it with the map
         $('#mapLoader').replaceWith(' <div id="mapid" class="center-block"></div>');
         let map = new L.map('mapid').setView([-27.833, 133.583], 4);
         //create the map
@@ -122,6 +126,8 @@ const userAction = async () => {
     //getData(camelize(json[0][0].name))
 
 
+    //when click on the map tab
+    //show the loader first to tell user we are process the data
     $('#mapBTN').click(function(){
         $('#mapid').replaceWith('<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>');
 
@@ -132,6 +138,7 @@ const userAction = async () => {
     document.getElementById("species-pic").src = json[0][0].image
     document.getElementById("species-status").innerText = json[0][0].status
 
+    //show the card when it ready
     $('#species-pic').show()
 
 
@@ -151,11 +158,14 @@ const userAction = async () => {
             var instance = M.Tabs.getInstance(tabs);
             instance.select('info-tab');
 
+            //close the model if click on any animals
             var modal = document.getElementById("species-model")
             var instance = M.Modal.getInstance(modal);
             instance.close();
 
 
+            //remove all the click listener for the map tab
+            //avoid to get more than one data
             $('#mapBTN').off("click")
             let species = myParent.firstElementChild.innerHTML
             $('#mapBTN').click(function(){
@@ -197,6 +207,10 @@ const updateSpeciesInfo = (jsonData) => {
     // else console.log(jsonData.data.name);
     var data = jsonData.data
     var id = jsonData._id
+
+    //the updated data would not have all the data so check why have been passed
+
+    //then change the passed value
     if (data.name != null) {
         var nameId = "name" + id
         var newName = document.getElementById(nameId)
@@ -226,6 +240,7 @@ const updateSpeciesInfo = (jsonData) => {
 
 
 }
+//if a new species has been added
 const newSpeciesInfo = (jsonData) => {
     var imageId = "image" + jsonData._id
     var nameId = "name" + jsonData._id
@@ -252,6 +267,7 @@ const newSpeciesInfo = (jsonData) => {
 
 $(document).ready(() => {
 
+    //init the side nav bar
     $('.sidenav').sidenav();
 
     //init tabs
@@ -265,8 +281,10 @@ $(document).ready(() => {
         $('.page-loader').fadeOut(1500);
     })
     
+    //call the user action function
     userAction()
 
+    //open the socket to listen any data change
     const socket = io()
     socket.on('updateData', (data) => {
         

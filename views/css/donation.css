@@ -17,6 +17,11 @@
     overflow-y: scroll;
 }
 
+.page-loader {
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 38%;
+}
 
 html {
     --scrollbarBG: #CFD8DC;
