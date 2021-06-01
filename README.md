@@ -19,7 +19,7 @@ a CI/CD has been established to deploy the application to IBM Cloud whenever pus
 The user can also deploy changes manually if necessary bu using the IBM CLI. The deployment can be found here: https://whydidyoubreaktoday-sleepy-eland.mybluemix.net/ 
 
 
-Github Actions are also being utilised to deploy a docker image of the application to dockerhub, this image can be found here:https://hub.docker.com/repository/docker/bjwilkin1/ff-repo.
+Github Actions are also being utilised to deploy a docker image of the application to dockerhub, this image can be found here:https://hub.docker.com/repository/docker/bjwilkin1/ff-repo. While the Docker Image is not deployed to add in realtime support you must run it on local and run a local instance of the realtime service with the address pointing to the localhost port the docker image is running on
 
 
 We hope to build on this and deploy the dockerized application to a kubernetes cluster by utilizing the ibm cloud free credit.
@@ -64,5 +64,8 @@ Due to a lack of publicly available data and funding the data is not up to date 
   * Utilizes the twitter API to feed real time tweets related to the topic of biodiversity in Australia into the frontend
 * IBM Watson Discovery News Web Crawler Service (PaaS)
     * provides queries related to the species and/or charities in the frontend to retrieve the latest news and topics providing sentiment analysis
+* DBaaS, we use mongoDB Atlas to provide the Database as a service 
+    * The DB can be accessed and edited through the admin portal or through MongoDB Compass using a URI in the following format mongodb+srv://admin:password@cluster0.5cdt0.mongodb.net/test?authSource=admin&replicaSet=atlas-yeq6k6-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
+    * We used MongoDB as it plugs right into Admin Bro, the group was more familiar with it and realtime support can be done pretty easily using Mongoose, we did explore cloudAnt and Firebase Realtime DB as alternatives
 
 <img src=“https://github.com/FaunaFication-737-780/Frontend-service/blob/dev/architectural-diagram.PNG”>
