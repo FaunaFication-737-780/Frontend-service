@@ -7,6 +7,7 @@ ADD routes.js /app
 ADD sockets.js /app
 ADD models /app/models
 ADD adminRouter.js /app
+ADD .env /app
 
 RUN cd /app; npm install
 
