@@ -65,4 +65,4 @@ Due to a lack of publicly available data and funding the data is not up to date 
 * IBM Watson Discovery News Web Crawler Service (PaaS)
     * provides queries related to the species and/or charities in the frontend to retrieve the latest news and topics providing sentiment analysis
 
-<img src=“”>
+<img src=“https://github.com/FaunaFication-737-780/Frontend-service/blob/dev/architectural-diagram.PNG”>
