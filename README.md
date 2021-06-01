@@ -16,13 +16,22 @@ Admin bro was used as it provides a very quick and simple CRUD functionality whe
 
 #Deployment
 a CI/CD has been established to deploy the application to IBM Cloud whenever pushes are made to the Master Branch, to make changes to the deployment the manifest.yml can be edited to increase memory and other feature. To change factors such as the CI/CD the project owner may do so on the IBM Cloud console.
-The user can also deploy changes manually if necessary bu using the IBM CLI. The deployment can be found here: https://whydidyoubreaktoday-sleepy-eland.mybluemix.net/ 
+The user can also deploy changes manually if necessary by using the IBM CLI. The deployment can be found here: https://whydidyoubreaktoday-sleepy-eland.mybluemix.net/ 
 
 
 Github Actions are also being utilised to deploy a docker image of the application to dockerhub, this image can be found here:https://hub.docker.com/repository/docker/bjwilkin1/ff-repo.
 
 
-We hope to build on this and deploy the dockerized application to a kubernetes cluster by utilizing the ibm cloud free credit.
+Utilizing IBM Clouds Kubernetes Cluster we created a cluster of the application running out of a Docker Container, The .yaml file can be found in the kubernetes folder. A link to the running kubernetes cluster can be found here: http://169.57.50.244:30598/
+#To deploy this to IBM Cloud kubernetes
+* create the cluster on IBM Cloud Console
+* login to the ibmcloud CLI and enter the following ibmcloud ks cluster config -c <cluster-name> (the command with the name can be found under help once the cluster has been created)
+* kubectl apply -f <yaml-file>
+* kubectl describe service
+  * there should be a port within the range of 30000 take that port and on the ibm kubernetes console grab the worker nodes public IP
+  * enter in your browser http://<worker-node public IP>:<port in 30000 range>
+
+
 
 #Testing
 automated testing is implemented with mocha and chai unit tests and is mainly used to test API endpoints and the verify data passed through the microservices created for this application. Tests can be implemented by running npm test and can be located in the test folder.
