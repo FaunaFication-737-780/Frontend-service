@@ -21,15 +21,15 @@ spec:
         - name: DB_USERNAME
           value: "admin"
         - name: DB_PASSWORD
-          value: "admin"
+          value: "xxxx"
         - name: DB_CLUSTER
-          value: "cluster0.5cdt0"
+          value: "clusterxxx"
         - name: DB_NAME
-          value: "geodata"
+          value: "xxxx"
         - name: ADMIN_USERNAME
-          value: "admin@example.com"
+          value: "xxxx@xxxx.com"
         - name: ADMIN_PASSWORD
-          value: "123456"
+          value: "xxxxx"
         ports: 
         - name: http
           containerPort: 8080 
