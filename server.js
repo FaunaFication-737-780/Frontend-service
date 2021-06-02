@@ -47,19 +47,7 @@ db.once('open', function() {
 
 
 
-// load local VCAP configuration  and service credentials for IBM cloud environment variables
-/*
-var vcapLocal;
-try {
-  vcapLocal = require('./vcap-local.json');
-  console.log("Loaded local VCAP", vcapLocal);
-} catch (e) { }
 
-const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
-
-const appEnv = cfenv.getAppEnv(appEnvOpts);
-
- */
 
 
 //serve static file (index.html, images, css)
