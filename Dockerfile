@@ -11,6 +11,14 @@ ADD .env /app
 
 RUN cd /app; npm install
 
+
+ENV DB_USERNAME admin
+ENV DB_PASSWORD admin
+ENV DB_CLUSTER cluster0.5cdt0
+ENV DB_NAME geodata
+ENV ADMIN_USERNAME admin@example.com
+ENV ADMIN_PASSWORD 123456
+
 ENV NODE_ENV production
 ENV PORT 8080
 EXPOSE 8080
