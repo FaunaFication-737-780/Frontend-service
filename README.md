@@ -10,7 +10,7 @@ The application should run with no further setup required if deployed on IBM clo
 
 #Admin Portal
 The admin portal use adminbro an admin portal service built on React providing CRUD functionality by utilizing Mongoose and MongoDB. To integrate collections into the admin portal create a Mongoose Schema for that collection in the Models directory and then require it in the adminRouter.js
-The test credentials are admin@example.com 123456
+
 
 Admin bro was used as it provides a very quick and simple CRUD functionality when hooked up with Mongoose and is secure by utilizing sessions. Passport was looked at initially although we had issues with other members meeting deadlines so the team needed to implement as quickly and efficiently as possible.
 
