@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ff-kubernetes
+  name: ff-kubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ff-kubernetes
+  template:
+    metadata:
+      labels:
+        app: ff-kubernetes
+    spec:
+      containers:
+      - image: bjwilkin1/ff-repo:latest
+        name: ff-kubernetes
+        env:
+        - name: DB_USERNAME
+          value: "admin"
+        - name: DB_PASSWORD
+          value: "admin"
+        - name: DB_CLUSTER
+          value: "cluster0.5cdt0"
+        - name: DB_NAME
+          value: "geodata"
+        - name: ADMIN_USERNAME
+          value: "admin@example.com"
+        - name: ADMIN_PASSWORD
+          value: "123456"
+        ports: 
+        - name: http
+          containerPort: 8080 
+         
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ff-kubernetes
+  name: ff-kubernetes
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: ff-kubernetes
+  type: NodePort
+--- 
+apiVersion: v1
+data:
+  server_name: FF Frontend
+kind: ConfigMap
+metadata:
+  name: ff-kubernetes
