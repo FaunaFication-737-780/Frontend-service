@@ -83,6 +83,7 @@ describe("Test livedata endpoint", function (){
 
 //TODO
 //maybe create an endpoint on server to get logs of latest changes idk
+/*
 describe("Test Watson Query", function (){
     var url = ""
     it('returns status 200 to check if api works', function (done) {
@@ -94,3 +95,4 @@ describe("Test Watson Query", function (){
         })
     });
 })
+*/
