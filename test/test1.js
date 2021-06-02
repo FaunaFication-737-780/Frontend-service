@@ -1,4 +1,7 @@
+//Mongoose Test
 
+
+/*
 const mongoose = require("mongoose")
 const uri = "mongodb://ray:1998@cluster0-shard-00-00.ho33k.mongodb.net:27017,cluster0-shard-00-01.ho33k.mongodb.net:27017,cluster0-shard-00-02.ho33k.mongodb.net:27017/test?ssl=true&replicaSet=atlas-k8w5gq-shard-0&authSource=admin&retryWrites=true&w=majority";
 //mongoose.connect('mongodb+srv://admin:admin@cluster0.5cdt0.mongodb.net/geodata', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -42,3 +45,5 @@ var kittySchema = mongoose.Schema({
     if (err) return console.error(err);
     console.log(kittens);
   })
+
+ */
