@@ -1,3 +1,6 @@
+
+
+/*
 var unixTimestamp =Date.now()
 var date = new Date(unixTimestamp);
 console.log("Unix Timestamp:",unixTimestamp)
@@ -9,3 +12,5 @@ console.log("Date: "+date.getDate()+
           " "+date.getHours()+
           ":"+date.getMinutes()+
           ":"+date.getSeconds());
+
+ */

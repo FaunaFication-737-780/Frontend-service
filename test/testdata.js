@@ -1,3 +1,9 @@
+
+
+
+//Donations test
+/*
+
 const a = [1,2,3,4,5,6,7]
 
 for (let index = 0; index < a.length-1; index+=2) {
@@ -10,3 +16,5 @@ for (let index = 0; index < a.length-1; index+=2) {
 if (a.index % 2 != 0) {
     console.log(a[a.length-1]);
 }
+
+ */

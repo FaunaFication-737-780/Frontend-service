@@ -1,7 +1,7 @@
 {
-  "name": "get-started-node",
+  "name": "FF-Frontend-Service",
   "main": "server.js",
-  "description": "An introduction to developing Node.js apps on the IBM Cloud platform",
+  "description": "Frontend Server that provides the homepage for the FaunaFication Application, which is a demonstration of Cloud Computing& Enterprise development techniques/Best Practice's",
   "version": "0.2.0",
   "private": false,
   "engines": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM-Cloud/get-started-node"
+    "url": "https://github.com/FaunaFication-737-780/Frontend-service"
   },
   "dependencies": {
     "@admin-bro/express": "^3.1.0",

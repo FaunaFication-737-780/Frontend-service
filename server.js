@@ -47,19 +47,7 @@ db.once('open', function() {
 
 
 
-// load local VCAP configuration  and service credentials
-/*
-var vcapLocal;
-try {
-  vcapLocal = require('./vcap-local.json');
-  console.log("Loaded local VCAP", vcapLocal);
-} catch (e) { }
 
-const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
-
-const appEnv = cfenv.getAppEnv(appEnvOpts);
-
- */
 
 
 //serve static file (index.html, images, css)
@@ -67,6 +55,9 @@ app.use(express.static(__dirname + '/views'));
 app.use('/success', express.static('./views/paymentSuccess.html'))
 app.use('/cancel', express.static('./views/paymentCancel.html'))
 
+
+
+//Host on port
 var port = process.env.PORT || 3000
 httpServer.listen(port, function() {
     console.log("To view your app, open this link in your browser: http://localhost:" + port);

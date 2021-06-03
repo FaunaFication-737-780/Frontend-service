@@ -132,7 +132,7 @@
       </ul>
 
 
-      <h4 class="subheader center teal-text">How can we solve this issue?</h4><div class="center"><audio src="assets/Audio_file2.mp3" id="sound3" preload="auto" type="audio/mpeg"></audio><a class="btn-floating btn-small waves-effect waves-light red" onclick="playAudio(2)"><i class="material-icons right">play_arrow</i></a></div>
+      <h4 class="subheader center teal-text">How can we solve this issue?</h4><div class="center"><audio src="assets/Audio_file2.mp3" id="sound3" preload="auto" type="audio/mpeg"></audio><a class="btn-floating btn-small waves-effect waves-light red" onclick="playAudio(3)"><i class="material-icons right">play_arrow</i></a></div>
       <p>To solve this issue accountability and awareness are important. Raising public awareness will motivate others to pitch in and potentially sway their political stance, leading to approval of policies that benefit this cause. This issue covers an entire continent and is brought about by a variety of factors, meaning that solving the issue requires action on an individual and bureaucratic level.</p>
 
 
@@ -208,6 +208,8 @@
       notPlaying.splice(notPlaying.indexOf(audioNumber), 1);
       notPlaying.forEach(function(id) {
           document.getElementById('sound' + id).pause();
+          document.getElementById('sound' + id).currentTime = 0
+
       });
   };
 </script>
