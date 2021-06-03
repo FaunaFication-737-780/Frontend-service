@@ -133,6 +133,29 @@ router.get('/allCharities', (req, res) => {
 
 })
 
+//call FaaS that returns Current Tweets using key value "Biodiversity" real time.
+router.get('/Tweets', (req, res) => {
+    //localhost 4000
+    request('https://us-south.functions.appdomain.cloud/api/v1/web/pgadadasu%40deakin.edu.au_dev/default/TweetsService', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //send the charities data
+            res.send(body)
+        }
+    })
+})
+
+router.get('/add', (req, res)=>{
+    request('http://localhost:3100', function (error, result, body) {
+        if (error != null) {
+            res.send(error)
+        } else {
+            let jsonResult = JSON.parse(body)
+            res.json(jsonResult)
+        }
+
+    })
+})
+
 
 
 module.exports = router
