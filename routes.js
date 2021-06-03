@@ -144,18 +144,6 @@ router.get('/Tweets', (req, res) => {
     })
 })
 
-router.get('/add', (req, res)=>{
-    request('http://localhost:3100', function (error, result, body) {
-        if (error != null) {
-            res.send(error)
-        } else {
-            let jsonResult = JSON.parse(body)
-            res.json(jsonResult)
-        }
-
-    })
-})
-
 
 
 module.exports = router
