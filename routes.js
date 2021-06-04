@@ -6,6 +6,7 @@ const morgan = require('morgan');
 var fs = require("fs");
 var path = require("path");
 
+
 var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
   flags: "a"
 });
@@ -90,7 +91,7 @@ router.get('/mapData', (req, res) => {
 router.get('/donatedPeople', (req, res) => {
   let name = encodeURI(req.query.name)
   let email = encodeURI(req.query.email)
-  //localhost for now just testing 
+  //localhost for now just testing
   request('https://realtime-db-service.us-south.cf.appdomain.cloud/donate?name='+name+"&email="+email, function (error, result, body) {
     if(error!=null){
       res.send(error)
@@ -99,8 +100,8 @@ router.get('/donatedPeople', (req, res) => {
       console.log('success send to the back end');
       console.log("the name is : " +name );
       console.log("the email is: "+ email);
-      
-      
+
+
       res.send(body)
     }
 
@@ -132,7 +133,6 @@ router.get('/allCharities', (req, res) => {
   })
 
 })
-
 
 
 module.exports = router

@@ -134,3 +134,7 @@ footer.page-footer {
     height: 80px;
     width: 70px;
 }
+#tweetStream{
+    height: 206px;
+    overflow-y: scroll;
+}

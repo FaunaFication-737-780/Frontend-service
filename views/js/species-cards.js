@@ -104,6 +104,7 @@ const userAction = async () => {
         var imageId = "image" + element._id
         var nameId = "name" + element._id
         var pID = "p" + element._id
+
         $("#species").append(
             $("<div class='row species-card-modal'"+
             "<div class=' col s12'>"+
@@ -140,6 +141,8 @@ const userAction = async () => {
 
     //show the card when it ready
     $('#species-pic').show()
+
+    //
 
 
     //Sets cookie to onclick to pass to next page
@@ -190,13 +193,27 @@ const userAction = async () => {
 
                     $('#species-pic').show()
 
+
+                }
+            })
+            json[0].forEach(element => {
+                if (species == element.name) {
+                    const threatData = element.threats
+                    document.getElementById('div0').innerHTML = '';
+                    for (let i = 0; i < threatData.length; i++){
+                        let el = document.getElementById('div0');
+                        const content = threatData[i];
+                        element = document.createElement('li');
+                        element.className = "collection-item";
+                        element.textContent = content;
+                        el = el.appendChild( element );
+                    }
                 }
             })
 
-
-
         }, false);
     }
+
 
 }
 

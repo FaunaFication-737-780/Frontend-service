@@ -7,4 +7,3 @@ $(document).ready(() => {
     document.cookie = ("name=Quokka")
     $('.collapsible').collapsible();
 })
-
