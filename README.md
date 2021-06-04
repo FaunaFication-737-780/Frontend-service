@@ -13,10 +13,12 @@
   <a href="https://github.com/FaunaFication-737-780/Frontend-service/blob/main/LICENSE" alt="License">
         <img src="https://img.shields.io/github/license/FaunaFication-737-780/Frontend-service" /></a>
   
-  <div align="center">
+  <a href="https://github.com/FaunaFication-737-780/Frontend-service/actions/workflows/main.yml" alt="License">
+        <img src= "https://github.com/FaunaFication-737-780/Frontend-service/actions/workflows/main.yml/badge.svg"/></a>
   
-  ![example branch parameter](https://github.com/FaunaFication-737-780/Frontend-service/actions/workflows/main.yml/badge.svg) ![example branch parameter](https://github.com/FaunaFication-737-780/Frontend-service/actions/workflows/unit-tests.yml/badge.svg)
- </div>
+  <a href= "https://github.com/FaunaFication-737-780/Frontend-service/actions/workflows/unit-tests.yml" alt="License">
+        <img src= "https://github.com/FaunaFication-737-780/Frontend-service/actions/workflows/unit-tests.yml/badge.svg"/></a>
+  
 </p>
 
 This application is built on nodejs express and utilizes leaflet for mapping utilities, MongoDB for database and is designed to showcase cloud computing with IBM cloud.
