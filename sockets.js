@@ -1,12 +1,12 @@
 //started the socket io
 const socketIo = (io,app) => {
-    //while a user connected 
-    
+    //while a user connected
+
     io.on('connection', (socket) => {
 
         console.log('a user connected');
 
-        //while user disconnected 
+        //while user disconnected
         socket.on('disconnect', () => {
             console.log('user disconnected');
         })
@@ -18,7 +18,7 @@ const socketIo = (io,app) => {
 
         })
 
-        //realtime database update for animals 
+        //realtime database update for animals
         app.post('/updateData', (req,res)=>{
             var data = req.body
             console.log('the data from backend is ');
@@ -27,7 +27,7 @@ const socketIo = (io,app) => {
             res.send("Data received")
         })
 
-        //realtime database update for donators 
+        //realtime database update for donators
         app.post('/updateDonator', (req,res)=>{
             var data = req.body
             console.log('the data from backend is ');
@@ -35,8 +35,17 @@ const socketIo = (io,app) => {
             io.emit('updateDonator',data)
             res.send("Data received")
         })
-        
-        
+
+        // Real-Time Tweets About Australian-Biodiversity
+        app.post('/Tweet', (req,res)=>{
+            const tweet = req.body;
+            console.log('This Tweet is retrieved From Back-End');
+            io.emit('TwitterData',tweet)
+            // Acknowledge Message back to Back-end:
+            res.send("Tweet Received")
+        })
+
+
     })
 }
 

@@ -190,14 +190,27 @@
 
 
 
-
+<script src="/socket.io/socket.io.js"></script>
 <script>
   $(document).ready(function(){
     $('.collapsible').collapsible();
     //document.cookie = ("name=Quokka")
-      /*setInterval(function (){
-          $('#tweetStream').load(' #tweetStream')
-      },3000);*/
+      const socket = io()
+      socket.on('TwitterData', (data) => {
+          const tweetel = document.createElement('div')
+          const tweetStream = document.getElementById('tweetStream')
+          tweetel.className = 'card'
+          tweetel.innerHTML = `
+          <div class="card-content">
+               <h5 class="card-title">${ data.data.text }</h5>
+               <h6> ${ data.includes.users[0].username } </h6>
+               <a class="waves-effect waves-light btn" href="https://twitter.com/${data.includes.users[0].username}/status/${data.data.id}" target="_blank"><i class="fab fa-twitter"></i>GO TO TWEET</a>
+           </div>
+          `
+          tweetStream.appendChild(tweetel)
+      })
+
+
   });
 
   function playAudio(audioNumber) {
@@ -212,31 +225,6 @@
 
       });
   };
-</script>
-
-<script>
-    let myJson
-
-    const userAction = async () => {
-        const response = await fetch('/Tweets');
-        myJson = await response.json(); //extract JSON from the http response
-        console.log(myJson)
-        const tweetel = document.createElement('div')
-        const tweetStream = document.getElementById('tweetStream')
-        console.log(myJson.result.length)
-        for (let i = 0; i < myJson.result.length; i++){
-            tweetel.className = 'card'
-            tweetel.innerHTML = `
-            <div class="card-content">
-                <h5 class="card-title">${ myJson.result[i].text }</h5>
-                <h6> ${ myJson.result[i].username } </h6>
-                <a class="waves-effect waves-light btn" href="https://twitter.com/${myJson.result[i].username}/status/${myJson.result[i].id}"><i class="fab fa-twitter"></i> TWEET</a>
-            </div>
-        `
-        }
-        tweetStream.appendChild(tweetel)
-    }
-    userAction()
 </script>
 
 </body>
