@@ -53,7 +53,7 @@ describe('SpeciesInfo FaaS', function () {
 //ensure validity of data for each
 describe('Single species FaaS', function () {
   var url =
-    'https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/mongoGetOneSpeciesInfo?name=Quokka';
+    'https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/default/getOneSpeciesInfo?name=Agile%20Wallaby';
   it('returns status 200 to check if api works', function (done) {
     request(url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
