@@ -218,17 +218,15 @@ const userAction = async () => {
             document.getElementById('species-pic').src = element.image;
             document.getElementById('species-status').innerText =
               element.status;
-            if (species == element.name) {
-              const threatData = element.threats;
-              document.getElementById('div0').innerHTML = '';
-              for (let i = 0; i < threatData.length; i++) {
-                let el = document.getElementById('div0');
-                const content = threatData[i];
-                element = document.createElement('li');
-                element.className = 'collection-item';
-                element.textContent = content;
-                el = el.appendChild(element);
-              }
+            const threatData = element.threats;
+            document.getElementById('div0').innerHTML = '';
+            for (let i = 0; i < threatData.length; i++) {
+              let el = document.getElementById('div0');
+              const content = threatData[i];
+              element = document.createElement('li');
+              element.className = 'collection-item';
+              element.textContent = content;
+              el = el.appendChild(element);
             }
             $('#species-pic').show();
           }
