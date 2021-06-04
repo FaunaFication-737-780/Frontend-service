@@ -167,4 +167,4 @@ See [contributors page](https://github.com/FaunaFication-737-780/Frontend-servic
 
 # Architectural Diagram
 
-<img src="./architectural-diagram.jpg">
+The diagram is [here](./architectural-diagram.jpg)
