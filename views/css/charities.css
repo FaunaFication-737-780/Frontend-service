@@ -6,14 +6,14 @@
  * Made By MaterializeCSS.com
  */
 
-h1{
+h1 {
   text-align: center;
 }
-h4{
+h4 {
   text-align: center;
 }
 
-body{
+body {
   background-image: url(../assets/blue-snow.png);
 }
 nav ul a,
@@ -24,21 +24,18 @@ nav .brand-logo {
 p {
   line-height: 2rem;
 }
-.charities-container{
+.charities-container {
   min-height: 100vh;
 }
-.charities-container span{
+.charities-container span {
   background-color: #1e978ba4;
   width: 100%;
-  
 }
-.header{
-
+.header {
   font-family: 'Pattaya', sans-serif;
 }
 
 .page-loader {
-
   position: fixed;
   z-index: 99;
   top: 0;
@@ -46,11 +43,8 @@ p {
   right: 0;
   bottom: 0;
   margin: auto;
-
-
-
 }
-.charities-container p{
+.charities-container p {
   color: rebeccapurple;
   height: 130px;
   overflow-y: scroll;
@@ -58,17 +52,16 @@ p {
   line-height: 1.8rem;
 }
 
-
 html {
-  --scrollbarBG: #CFD8DC;
-  --thumbBG: #90A4AE;
+  --scrollbarBG: #cfd8dc;
+  --thumbBG: #90a4ae;
 }
 
 .charities-container p::-webkit-scrollbar {
   width: 11px;
 }
 
-.charities-container p{
+.charities-container p {
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
@@ -84,11 +77,10 @@ html {
   border: 3px solid var(--scrollbarBG);
 }
 
-img{
+img {
   width: 10px;
   height: 500px;
 }
-
 
 .sidenav-trigger {
   color: #26a69a;
@@ -98,13 +90,13 @@ img{
   min-height: 380px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, 0.9);
 }
-  .parallax-container .section {
-    width: 100%;
-  }
+.parallax-container .section {
+  width: 100%;
+}
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -114,7 +106,7 @@ img{
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
@@ -131,9 +123,6 @@ footer.page-footer {
   margin: 0;
 }
 
-
-
-
 .rTable {
   display: table;
   width: 90%;
@@ -143,15 +132,17 @@ footer.page-footer {
 }
 .rTableHeading {
   display: table-header-group;
-  background-color:#4db6ac;
+  background-color: #4db6ac;
 }
-.rTableCell, .rTableHead {
+.rTableCell,
+.rTableHead {
   display: table-cell;
   padding: 3px 10px;
   border: 1px solid #4db6ac;
   font: normal 70% arial;
 }
-.rTableCell2, .rTableHead2 {
+.rTableCell2,
+.rTableHead2 {
   display: table-cell;
   border-radius: 10px 10px 10px 10px;
   padding: 3px 10px;
@@ -172,38 +163,37 @@ footer.page-footer {
   padding: 1px 5px;
 }
 
-.button-style{
-  background-color:#4db6ac;
-  color:#FFF;
-  padding:8px 12px;
-  border:0;
-  border-radius:4px;
+.button-style {
+  background-color: #4db6ac;
+  color: #fff;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 4px;
 }
 
-
-#species{
+#species {
   height: auto;
   width: auto;
 }
 
-.image_card{
-    height: auto;
-    width: 175px;
-    object-fit: cover;
-    padding-top: 8%;
-    padding-right: 10px;
-    margin-left: 0px;
+.image_card {
+  height: auto;
+  width: 175px;
+  object-fit: cover;
+  padding-top: 8%;
+  padding-right: 10px;
+  margin-left: 0px;
 }
-#video_opt{
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
+#video_opt {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
 }
-#icon{
-    height: 70px;
-    width: 70px;
+#icon {
+  height: 70px;
+  width: 70px;
 }
-#icon_2{
-    height: 80px;
-    width: 70px;
+#icon_2 {
+  height: 80px;
+  width: 70px;
 }
