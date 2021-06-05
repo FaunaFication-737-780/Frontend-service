@@ -3,10 +3,9 @@ FROM node:12-alpine
 ADD views /app/views
 ADD package.json /app
 ADD server.js /app
-ADD routes.js /app
 ADD sockets.js /app
 ADD models /app/models
-ADD adminRouter.js /app
+ADD router /app/router
 
 RUN cd /app; npm install
 
