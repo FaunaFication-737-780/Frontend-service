@@ -72,7 +72,7 @@ const Dashboard = () => {
                   <Box variant="grey">
                       <Box variant="white" flex flexDirection="row">
                           <Box flexGrow={1}>
-                              <Header.H3>Mongoose - DataBase</Header.H3>
+                              <Header.H3>Mongoose</Header.H3>
                           </Box>
                           <Box flexShrink={0}>
                               <DropDown>
@@ -107,12 +107,12 @@ const Dashboard = () => {
                       </Box>
                   </Box>
               </Section>
-              <Section>
+              {/*<Section>
                   <Box flex flexDirection="column">
                       <Box width={[1, 1/2, 1/3]}>Sidebar</Box>
                       <Box width={[1, 1/2, 2/3]}>Content</Box>
                   </Box>
-              </Section>
+              </Section>*/}
           </Box>
           <CurrentUserNav name={name}/>
       </ThemeProvider>
