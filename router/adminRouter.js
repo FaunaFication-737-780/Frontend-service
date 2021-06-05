@@ -4,12 +4,15 @@ const AdminBroMongoose = require('@admin-bro/mongoose');
 
 //use user now for example
 //const User = require('./models/userModel')
-require('../models/speciesInfoModel');
-require('../models/donatedPeopleModel');
-require('../models/charitiesModel');
+const speciesInfo = require('../models/speciesInfoModel');
+const donatedPeople = require('../models/donatedPeopleModel');
+const charities = require('../models/charitiesModel');
 const mongoose = require('mongoose');
 const favicon = require('../models/logos');
-
+const databaseParent = {
+  name: 'Data',
+  icon: 'Document',
+};
 require('dotenv').config();
 
 AdminBro.registerAdapter(AdminBroMongoose);
@@ -27,9 +30,13 @@ const locale = {
   },
 };
 const AdminBroOptions = {
-  //resources: [cat],
+  resources: [
+    { resource: speciesInfo, options: { navigation: databaseParent } },
+    { resource: donatedPeople, options: { navigation: databaseParent } },
+    { resource: charities, options: { navigation: databaseParent } },
+  ],
   preventAssignment: true,
-  databases: [mongoose],
+  // databases: [mongoose],
   dashboard: {
     handler: async () => {
       return {
