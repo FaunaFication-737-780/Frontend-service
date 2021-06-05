@@ -14,6 +14,18 @@ require('dotenv').config();
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
+const locale = {
+  translations: {
+    labels: {
+      // change Heading for Login
+      loginWelcome: 'FaunaFication Admin Portal',
+    },
+    messages: {
+      loginWelcome:
+        'Please use admin example and password to login. To gain access please contact our team. ',
+    },
+  },
+};
 const AdminBroOptions = {
   //resources: [cat],
   preventAssignment: true,
@@ -27,10 +39,12 @@ const AdminBroOptions = {
     component: AdminBro.bundle('../models/dashboard/dashboard.jsx'),
   },
   branding: {
-    companyName: 'Animals in Australia admin portal',
-    logo: 'https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2011/06/Best-animals-in-Australia.jpg',
+    companyName: 'FaunaFication',
+    logo: 'https://i.imgur.com/JYdXDWa.png',
     favicon: favicon,
+    softwareBrothers: false,
   },
+  locale,
 };
 
 const ADMIN = {
