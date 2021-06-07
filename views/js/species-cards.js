@@ -331,6 +331,8 @@ $(document).ready(() => {
   $(window).on('load', function () {
     $('.page-loader').fadeOut(1500);
   });
+  const response = fetch("/DiscoveryNews")
+  console.log(response)
 
   //call the user action function
   userAction();
