@@ -52,7 +52,7 @@ router.get('/DiscoveryNews', (req, res) => {
     discovery.query(queryParams)
         .then(queryResponse => {
             console.log(JSON.stringify(queryResponse, null, 2));
-            res.send(queryResponse)
+            res.send(JSON.stringify(queryResponse, null, 2));
         })
         .catch(err => {
             console.log('error:', err);

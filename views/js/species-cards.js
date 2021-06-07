@@ -317,6 +317,15 @@ const newSpeciesInfo = (jsonData) => {
   );
 };
 
+
+const discoveryCall = async () => {
+  const response = await fetch('/DiscoveryNews');
+  myJson = await response.json(); //extract JSON from the http response
+  // do something with myJson
+  console.log(myJson);
+}
+
+
 $(document).ready(() => {
   //init the side nav bar
   $('.sidenav').sidenav();
@@ -331,8 +340,7 @@ $(document).ready(() => {
   $(window).on('load', function () {
     $('.page-loader').fadeOut(1500);
   });
-  const response = fetch("/DiscoveryNews")
-  console.log(response)
+  discoveryCall()
 
   //call the user action function
   userAction();
