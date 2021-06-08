@@ -317,14 +317,14 @@ const newSpeciesInfo = (jsonData) => {
   );
 };
 
-
 const discoveryCall = async () => {
+  //TODO: To get the species name
+  //send request with the name
   const response = await fetch('/DiscoveryNews');
   myJson = await response.json(); //extract JSON from the http response
   // do something with myJson
   console.log(myJson);
-}
-
+};
 
 $(document).ready(() => {
   //init the side nav bar
@@ -340,8 +340,11 @@ $(document).ready(() => {
   $(window).on('load', function () {
     $('.page-loader').fadeOut(1500);
   });
-  discoveryCall()
 
+  $('#insightsBTN').click(function () {
+    discoveryCall();
+    console.log('clicked insight');
+  });
   //call the user action function
   userAction();
 
