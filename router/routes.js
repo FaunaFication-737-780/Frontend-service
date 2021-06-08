@@ -5,8 +5,6 @@ const request = require('request');
 const morgan = require('morgan');
 var fs = require('fs');
 var path = require('path');
-const { type } = require('jquery');
-const { encode } = require('punycode');
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
   flags: 'a',
