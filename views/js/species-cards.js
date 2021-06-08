@@ -221,12 +221,19 @@ const userAction = async () => {
             const threatData = element.threats;
             document.getElementById('div0').innerHTML = '';
             for (let i = 0; i < threatData.length; i++) {
-              let el = document.getElementById('div0');
-              const content = threatData[i];
-              element = document.createElement('li');
-              element.className = 'collection-item';
-              element.textContent = content;
-              el = el.appendChild(element);
+                    let el = document.getElementById('div0');
+                    element = document.createElement('li');
+                    element.className = 'collection-item';
+                    element.innerHTML = `                
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                  <img src="${threatData[i][1]}"  alt="" class="circle" style="height: 70px;width: 70px"/>
+                                  <h5 class="card-title">${threatData[i][0]}</h5>
+                                  <p>${threatData[i][2]}</p>
+                                </li>
+                            </ul>     
+                      `
+                    el = el.appendChild(element);
             }
             $('#species-pic').show();
           }
