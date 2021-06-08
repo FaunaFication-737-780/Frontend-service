@@ -5,6 +5,8 @@ const request = require('request');
 const morgan = require('morgan');
 var fs = require('fs');
 var path = require('path');
+const { type } = require('jquery');
+const { encode } = require('punycode');
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
   flags: 'a',
@@ -128,14 +130,25 @@ router.get('/allCharities', (req, res) => {
 
 //Queries IBM Watson Discovery for species related news
 router.get('/DiscoveryNews', (req, res) => {
-  const name = encodeURI(req.query.name);
-  request(watsonUrl + name, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      //console.log(body) // Print the google web page.
-      res.send(body);
+  var name = req.query.name;
+
+  if (name == null || name == '' || typeof name == 'undefined') {
+    console.log('undefined');
+    res.status(400).send('please including the name');
+  } else {
+    name = encodeURI(name);
+    try {
+      request(watsonUrl + name, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          //console.log(body) // Print the google web page.
+          res.send(body);
+        }
+      });
+      console.log(name);
+    } catch (error) {
+      console.log(error);
     }
-  });
-  console.log(name);
+  }
 });
 
 module.exports = router;
