@@ -322,7 +322,7 @@ const discoveryCall = async () => {
   //send request with the name
   const response = await fetch('/DiscoveryNews');
   myJson = await response.json(); //extract JSON from the http response
-  // do something with myJson
+  //TODO: Display the needed info to the insights tab
   console.log(myJson);
 };
 
