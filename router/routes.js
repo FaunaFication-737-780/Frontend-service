@@ -3,10 +3,6 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const morgan = require('morgan');
-const DiscoveryV1 = require('ibm-watson/discovery/v1');
-const {
-    IamAuthenticator
-} = require('ibm-watson/auth');
 var fs = require('fs');
 var path = require('path');
 
@@ -20,48 +16,6 @@ morgan.token('host', function (req, res) {
   return req.hostname;
 });
 
-
-
-
-const discovery = new DiscoveryV1({
-    version: '2019-04-30',
-    authenticator: new IamAuthenticator({
-        apikey: '--KTG2kQCnkxynw-7P2vmC-BrgSHrIpK08WsY9Ud2QVr',
-    }),
-    serviceUrl: 'https://api.us-south.discovery.watson.cloud.ibm.com',
-});
-
-
-// const environmentId = '4e5276ab-e80b-41e7-b16c-91bb2d2693eb'
-const environmentId = 'system'
-//const collectionId = "a0e7632a-64a4-43d6-aaa6-236a6bce28a3"
-const collectionId = 'news-en'
-
-
-
-
-//Queries IBM Watson Discovery for species related news
-router.get('/DiscoveryNews', (req, res) => {
-    //query parameters
-    let queryParams = {
-        environmentId: environmentId,
-        collectionId: collectionId,
-        query: 'Quokka'
-    };
-
-    discovery.query(queryParams)
-        .then(queryResponse => {
-            console.log(JSON.stringify(queryResponse, null, 2));
-            res.send(JSON.stringify(queryResponse, null, 2));
-        })
-        .catch(err => {
-            console.log('error:', err);
-        });
-});
-
-
-
-
 /**
  * I am not be able to access ibm cloud via localhost
  * but you can use ibm cloud url if you are not in china
@@ -69,6 +23,9 @@ router.get('/DiscoveryNews', (req, res) => {
 //const geoDataInfoUrl = 'http://localhost:3001/find/name?name='
 const geoDataInfoUrl =
   'https://geodata-api.us-south.cf.appdomain.cloud/find/name?name=';
+
+const watsonUrl =
+  'https://realtime-db-service.us-south.cf.appdomain.cloud/watson?name=';
 
 //Calls FaaS that returns all species info data
 router.get('/allSpeciesInfoData', (req, res) => {
@@ -97,7 +54,6 @@ router.get('/findSpeciesInfoData', (req, res) => {
     }
   );
 });
-
 
 /**
  * now is only for using common name
@@ -168,6 +124,18 @@ router.get('/allCharities', (req, res) => {
       }
     }
   );
+});
+
+//Queries IBM Watson Discovery for species related news
+router.get('/DiscoveryNews', (req, res) => {
+  const name = encodeURI(req.query.name);
+  request(watsonUrl + name, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body) // Print the google web page.
+      res.send(body);
+    }
+  });
+  console.log(name);
 });
 
 module.exports = router;
