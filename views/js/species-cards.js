@@ -343,23 +343,48 @@ const discoveryCall = async () => {
  //TODO: Display the needed info to the insights tab
    if (myJson !== null) {
 
-      appendData(myJson);
+     appendData(myJson);
      console.log(myJson);
    } else {
       console.log("query result is null");
    }
 };
 
+/** */
 function appendData(myJson) {
 var discoveryContainer = document.getElementById("specieDiscoveryData");
  for (var i = 0; i < myJson.length; i++) {
    // append each person to our page
      var div = document.createElement("div");
        // div.innerHTML = 'Name: ' + myJson[i].result + ' ' + myJson[i].lastName;
-       div.innerHTML = 'Result: ' + myJson[i].results;
+       div.innerHTML = 'Result: ' + myJson[i].data.results;
        discoveryContainer.appendChild(div);
  }
 };
+
+
+
+
+/** Start page display code here 
+
+function json2array(json) {
+  var result = [];
+  var keys = Object.keys(json);
+  keys.forEach(function (key) {
+    result.push(json[key]);
+  });
+  return result;
+}
+let json = json2array(myJson);
+console.log(json);*/
+
+
+
+
+
+
+/** Stop page display code  */
+
 
 $(document).ready(() => {
   //init the side nav bar
