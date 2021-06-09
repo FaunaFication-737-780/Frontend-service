@@ -332,55 +332,53 @@ const specieInsight = async () => {
 
 
 const discoveryCall = async () => {
-  var tabSpecieName = document.getElementById("species-name").innerHTML;
-  console.log("Insight Tab speciename: " + tabSpecieName);
- //send request with the name
- const response = await fetch('/DiscoveryNews?' + new URLSearchParams({
-   name: tabSpecieName
-}));
 
- myJson = await response.json(); //extract JSON from the http response
- //TODO: Display the needed info to the insights tab
-   if (myJson !== null) {
+   //show preloader when user clicks on insight tab
+   $('.page-loader').fadeIn(0);
+   $('.page-loader').fadeOut(700);
+   
+   specieInsight();
+   var tabSpecieName = document.getElementById("species-name").innerHTML;
+      console.log("Insight Tab speciename: " + tabSpecieName);
+ 
+      //send request with the name
+      const response = await fetch('/DiscoveryNews?' + new URLSearchParams({
+          name: tabSpecieName
+    }));
 
-     appendData(myJson);
-     console.log(myJson);
-   } else {
-      console.log("query result is null");
-   }
-};
+ var myJson = await response.json(); //extract JSON from the http response
+  if (myJson != null || myJson != ''){
+        
+   // var count = Object.keys(myJson).length;
+    
 
-/** */
-function appendData(myJson) {
-var discoveryContainer = document.getElementById("specieDiscoveryData");
- for (var i = 0; i < myJson.length; i++) {
-   // append each person to our page
-     var div = document.createElement("div");
-       // div.innerHTML = 'Name: ' + myJson[i].result + ' ' + myJson[i].lastName;
-       div.innerHTML = 'Result: ' + myJson[i].data.results;
-       discoveryContainer.appendChild(div);
- }
-};
+   var count = Object.keys(myJson.result.results).length;
 
+        document.getElementById("resultLength").innerHTML = 'Total Number of Insights: ' + count;
+   
+      var insightRecord = myJson.result.results;
+      console.log(insightRecord);
+      
+       appenData(insightRecord);
+  
+   
+    function appenData(data){   
+         var insightContainer = document.getElementById("insight-data");
+           for (let i = 0; i < count; i++) {
+              var div = document.createElement("div");
+                  div.innerHTML =                 
+                      `<h5>Insight Text:  + ${insightRecord[i].text}  </h5> 
+                            <p> <span> ${insightRecord[i].url}  </span> </br>
+                            <span> ${insightRecord[i].author} </span>
+                            `
+             insightContainer.appendChild(div);
+    };
+  }
+ 
+  } 
+  
 
-
-
-/** Start page display code here 
-
-function json2array(json) {
-  var result = [];
-  var keys = Object.keys(json);
-  keys.forEach(function (key) {
-    result.push(json[key]);
-  });
-  return result;
 }
-let json = json2array(myJson);
-console.log(json);*/
-
-
-
-
 
 
 /** Stop page display code  */
@@ -403,7 +401,7 @@ $(document).ready(() => {
 
   //click action on insight tab
   $('#insightsBTN').click(function () {
-    specieInsight();
+   
     discoveryCall();
     console.log('clicked insight');
   });
