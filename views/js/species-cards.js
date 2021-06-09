@@ -337,48 +337,29 @@ const discoveryCall = async () => {
  //send request with the name
  const response = await fetch('/DiscoveryNews?' + new URLSearchParams({
    name: tabSpecieName
- }));
+}));
 
  myJson = await response.json(); //extract JSON from the http response
  //TODO: Display the needed info to the insights tab
- console.log(myJson);
+   if (myJson !== null) {
 
- /** 
- var discoveryContainer = document.getElementById("specieDiscoveryData");
+      appendData(myJson);
+     console.log(myJson);
+   } else {
+      console.log("query result is null");
+   }
+};
+
+function appendData(myJson) {
+var discoveryContainer = document.getElementById("specieDiscoveryData");
  for (var i = 0; i < myJson.length; i++) {
    // append each person to our page
      var div = document.createElement("div");
        // div.innerHTML = 'Name: ' + myJson[i].result + ' ' + myJson[i].lastName;
        div.innerHTML = 'Result: ' + myJson[i].results;
-        discoveryContainer.appendChild(div);
+       discoveryContainer.appendChild(div);
  }
-
- 
-
-function json2array(json) {
-  var result = [];
-  var keys = Object.keys(json);
-  keys.forEach(function (key) {
-    result.push(json[key]);
-  });
-  return result;
-}
-               
-
-let discoveryJson = json2array(myJson);
-console.log(discoveryJson);
-
-discoveryJson [0].forEach((element) => {
-  var imageId = 'image' + element._id;
-  var nameId = 'name' + element._id;
-
-  var pID = 'p' + element._id;
-
-
-
-
 };
-*/     
 
 $(document).ready(() => {
   //init the side nav bar
@@ -418,4 +399,4 @@ $(document).ready(() => {
     console.log('socket message: ');
     console.log(data);
   });
-})};
+});
