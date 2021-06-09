@@ -126,9 +126,13 @@ router.get('/allCharities', (req, res) => {
   );
 });
 
+
+
 //Queries IBM Watson Discovery for species related news
-router.get('/DiscoveryNews', (req, res) => {
-  var name = req.query.name;
+router.get('/DiscoveryNews?', (req, res) => {
+
+  let name = req.query.name;
+  console.log("Query search parameter is " + name)
 
   if (name == null || name == '' || typeof name == 'undefined') {
     console.log('undefined');
