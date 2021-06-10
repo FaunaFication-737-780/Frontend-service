@@ -148,6 +148,7 @@ footer.page-footer {
 
   #insightdataclass {
      padding: 2px !important; 
+     background-color: #CFD8DC !important; 
      display: block !important; 
      overflow: auto !important;
   }

@@ -194,6 +194,21 @@ const userAction = async () => {
         var instance = M.Modal.getInstance(modal);
         instance.close();
 
+              
+        
+        //reload the discoveryCall function when tab is clicked
+
+       $('#insightsBTN').click(function () {
+        $('#insight-data').replaceWith(
+       '<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>'
+        )
+          discoveryCall();
+       
+        });
+     
+      
+     
+
         //remove all the click listener for the map tab
         //avoid to get more than one data
         $('#mapBTN').off('click');
@@ -206,6 +221,8 @@ const userAction = async () => {
           getData(camelize(species));
         });
 
+
+       
         json[0].forEach((element) => {
           if (species == element.name) {
             //when user select new specie, show preloader and hide image
@@ -232,6 +249,7 @@ const userAction = async () => {
             $('#species-pic').show();
           }
         });
+
       },
       false
     );
@@ -319,6 +337,8 @@ const newSpeciesInfo = (jsonData) => {
 };
 
 
+
+
 //refresh tab on click
 
   
@@ -341,8 +361,6 @@ const discoveryCall = async () => {
 
 
 
-
-
    //show preloader when user clicks on insight tab
    $('.page-loader').fadeIn(0);
    $('.page-loader').fadeOut(700);
@@ -350,7 +368,7 @@ const discoveryCall = async () => {
 
 
   
-   specieInsight();
+   
    var tabSpecieName = document.getElementById("species-name").innerHTML;
       console.log("Insight Tab speciename: " + tabSpecieName);
  
@@ -391,14 +409,13 @@ const discoveryCall = async () => {
            for (let i = 0; i < counter; i++) {
               var div = document.createElement("div");
                   div.innerHTML =                 
-                      `  <div  class = "container insightrecordclass" >
+                      `  <div  class = "container insightrecordclass" style = "background:'white';" onmouseover="this.style.background='Aquamarine';" onmouseout="this.style.background='white';" >
                              ${insightRecord[i].text} 
                              </br>
                               </br> 
                                 <strong>URL: </strong> ${insightRecord[i].url} 
                            </div> 
-                    
-                      <p> &#160;</p>
+                           </br> 
                           
                       `
              insightContainer.appendChild(div);
@@ -432,6 +449,8 @@ $(document).ready(() => {
 
   //click action on insight tab
   $('#insightsBTN').click(function () {
+    // reloadTab();
+    specieInsight();
      discoveryCall();
     console.log('clicked insight');
   });
