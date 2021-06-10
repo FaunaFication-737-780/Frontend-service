@@ -318,6 +318,9 @@ const newSpeciesInfo = (jsonData) => {
   );
 };
 
+
+//refresh tab on click
+
   
   // get specie name upon page load or specie selection    
 const  setSpecieNameOnTab = (id, newvalue) => {
@@ -332,23 +335,39 @@ const specieInsight = async () => {
 
 
 
+
 //id="insightsBTN"><a href="#insights-tab"
 const discoveryCall = async () => {
 
-  
+
+
+
 
    //show preloader when user clicks on insight tab
    $('.page-loader').fadeIn(0);
    $('.page-loader').fadeOut(700);
-   
+
+
+
+  
    specieInsight();
    var tabSpecieName = document.getElementById("species-name").innerHTML;
       console.log("Insight Tab speciename: " + tabSpecieName);
  
+   
+
+      $(".insights-tab").tabs({
+        select: function(event, ui) {                   
+           window.location.hash(ui.tab.hash);
+        },
+      });
+        
+      
       //send request with the name
-      const response = await fetch('/DiscoveryNews?' + new URLSearchParams({
+     const response = await fetch('/DiscoveryNews?' + new URLSearchParams({
           name: tabSpecieName
     }));
+
 
  var myJson = await response.json(); //extract JSON from the http response
   if (myJson != null || myJson != ''){
@@ -363,32 +382,40 @@ const discoveryCall = async () => {
       var insightRecord = myJson.result.results;
       console.log(insightRecord);
       
-       appenData(insightRecord);
-  
    
+   
+       appenData(insightRecord);
+
     function appenData(data){   
          var insightContainer = document.getElementById("insight-data");
            for (let i = 0; i < counter; i++) {
               var div = document.createElement("div");
                   div.innerHTML =                 
-                      `<p id="insightcenter" style="border: 1">${insightRecord[i].text}  </p> <p> </p> <p> </p>
-                            <span> <strong>URL: </strong> ${insightRecord[i].url}  </span> </br>
-                            <span> <strong>Author: </strong>  ${insightRecord[i].author} </span><p> </p><p> </p> <p> </p>
-                            `
+                      `  <div  class = "container insightrecordclass" >
+                             ${insightRecord[i].text} 
+                             </br>
+                              </br> 
+                                <strong>URL: </strong> ${insightRecord[i].url} 
+                           </div> 
+                    
+                      <p> &#160;</p>
+                          
+                      `
              insightContainer.appendChild(div);
     };
   }
  
   } 
-  
 
 }
 
+   
 
 /** Stop page display code  */
 
 
 $(document).ready(() => {
+
   //init the side nav bar
   $('.sidenav').sidenav();
 
@@ -405,8 +432,7 @@ $(document).ready(() => {
 
   //click action on insight tab
   $('#insightsBTN').click(function () {
-   
-    discoveryCall();
+     discoveryCall();
     console.log('clicked insight');
   });
   //call the user action function

@@ -134,3 +134,30 @@ footer.page-footer {
   height: 206px;
   overflow-y: scroll;
 }
+
+
+#insightclass {
+   background-color: transparent !important; 
+   overflow: hidden !important; 
+   text-align: center !important; 
+   padding: 2px !important; 
+   display: block !important; 
+   overflow: auto !important; 
+   width: 100% !important;
+  }   
+
+  #insightdataclass {
+     padding: 2px !important; 
+     display: block !important; 
+     overflow: auto !important;
+  }
+
+  insightrecordclass { 
+    background-color: #CFD8DC !important; 
+    display: inline-block !important; 
+    width:60% !important; 
+    padding: 10px !important; 
+    word-wrap: break-word  !important; 
+    word-break:break-all !important; 
+    font-size: medium !important;
+  }
