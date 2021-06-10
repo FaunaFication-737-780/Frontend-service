@@ -409,13 +409,14 @@ const discoveryCall = async () => {
            for (let i = 0; i < counter; i++) {
               var div = document.createElement("div");
                   div.innerHTML =                 
-                      `  <div  class = "container insightrecordclass" style = "background:'white';" onmouseover="this.style.background='Aquamarine';" onmouseout="this.style.background='white';" >
+                      `  <div  class = "container insightrecordclass" style = "background:'white';" onmouseover="this.style.background='Aquamarine';" onmouseout="this.style.background='white';"  "border-style: groove !important;" "border-color: 'aquamarine' !important; border-width:thin !important;" >
                              ${insightRecord[i].text} 
                              </br>
                               </br> 
-                                <strong>URL: </strong> ${insightRecord[i].url} 
+                                <strong>URL: </strong> <a style ="color: black !important;" href='${insightRecord[i].url}' target="_blank" rel="noopener noreferrer"> ${insightRecord[i].url}</a> 
                            </div> 
                            </br> 
+                           </br>
                           
                       `
              insightContainer.appendChild(div);
