@@ -331,7 +331,11 @@ const specieInsight = async () => {
 };
 
 
+
+//id="insightsBTN"><a href="#insights-tab"
 const discoveryCall = async () => {
+
+  
 
    //show preloader when user clicks on insight tab
    $('.page-loader').fadeIn(0);
@@ -349,12 +353,12 @@ const discoveryCall = async () => {
  var myJson = await response.json(); //extract JSON from the http response
   if (myJson != null || myJson != ''){
         
-   // var count = Object.keys(myJson).length;
+
     
+   var counter = 0;
+    counter = Object.keys(myJson.result.results).length;
 
-   var count = Object.keys(myJson.result.results).length;
-
-        document.getElementById("resultLength").innerHTML = 'Total Number of Insights: ' + count;
+        document.getElementById("resultLength").innerHTML = 'Total Number of Insights: ' + counter;
    
       var insightRecord = myJson.result.results;
       console.log(insightRecord);
@@ -364,12 +368,12 @@ const discoveryCall = async () => {
    
     function appenData(data){   
          var insightContainer = document.getElementById("insight-data");
-           for (let i = 0; i < count; i++) {
+           for (let i = 0; i < counter; i++) {
               var div = document.createElement("div");
                   div.innerHTML =                 
-                      `<h5>Insight Text:  + ${insightRecord[i].text}  </h5> 
-                            <p> <span> ${insightRecord[i].url}  </span> </br>
-                            <span> ${insightRecord[i].author} </span>
+                      `<p id="insightcenter" style="border: 1">${insightRecord[i].text}  </p> <p> </p> <p> </p>
+                            <span> <strong>URL: </strong> ${insightRecord[i].url}  </span> </br>
+                            <span> <strong>Author: </strong>  ${insightRecord[i].author} </span><p> </p><p> </p> <p> </p>
                             `
              insightContainer.appendChild(div);
     };
