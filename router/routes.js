@@ -24,6 +24,9 @@ morgan.token('host', function (req, res) {
 const geoDataInfoUrl =
   'https://geodata-api.us-south.cf.appdomain.cloud/find/name?name=';
 
+const watsonUrl =
+  'https://realtime-db-service.us-south.cf.appdomain.cloud/watson?name=';
+
 //Calls FaaS that returns all species info data
 router.get('/allSpeciesInfoData', (req, res) => {
   //localhost 4000
@@ -52,18 +55,9 @@ router.get('/findSpeciesInfoData', (req, res) => {
   );
 });
 
-//IBM discovery FaaS call
-router.get('/DiscoveryNews', (req, res) => {
-  request(
-    'https://us-south.functions.appdomain.cloud/api/v1/web/brycewilkinson43%40gmail.com_dev/hello-world/helloworld.json',
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        //console.log(body) // Print the google web page.
-        res.send(body);
-      }
-    }
-  );
-});
+
+
+
 
 /**
  * now is only for using common name
@@ -134,6 +128,33 @@ router.get('/allCharities', (req, res) => {
       }
     }
   );
+});
+
+
+
+//Queries IBM Watson Discovery for species related news
+router.get('/DiscoveryNews?', (req, res) => {
+
+  let name = req.query.name;
+  console.log("Query search parameter is " + name)
+
+  if (name == null || name == '' || typeof name == 'undefined') {
+    console.log('undefined');
+    res.status(400).send('please including the name');
+  } else {
+    name = encodeURI(name);
+    try {
+      request(watsonUrl + name, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          //console.log(body) // Print the google web page.
+          res.send(body);
+        }
+      });
+      console.log(name);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 });
 
 module.exports = router;

@@ -4,6 +4,7 @@
 //     var instances = M.Sidenav.init(elems);
 // });
 
+
 //this count used for map the cards
 var count = 1;
 
@@ -193,6 +194,11 @@ const userAction = async () => {
         var instance = M.Modal.getInstance(modal);
         instance.close();
 
+              
+        
+
+     
+
         //remove all the click listener for the map tab
         //avoid to get more than one data
         $('#mapBTN').off('click');
@@ -205,6 +211,8 @@ const userAction = async () => {
           getData(camelize(species));
         });
 
+
+       
         json[0].forEach((element) => {
           if (species == element.name) {
             //when user select new specie, show preloader and hide image
@@ -238,6 +246,7 @@ const userAction = async () => {
             $('#species-pic').show();
           }
         });
+
       },
       false
     );
@@ -324,7 +333,105 @@ const newSpeciesInfo = (jsonData) => {
   );
 };
 
+
+
+
+//refresh tab on click
+
+  
+  // get specie name upon page load or specie selection    
+const  setSpecieNameOnTab = (id, newvalue) => {
+      var sName= document.getElementById(id);
+      sName.innerHTML = newvalue;
+}    
+
+  //set specie Name in Insight tab
+const specieInsight = async () => {
+   setSpecieNameOnTab("specie-insight", document.getElementById("species-name").innerHTML);
+};
+
+
+
+
+//id="insightsBTN"><a href="#insights-tab"
+const discoveryCall = async () => {
+
+
+
+   //show preloader when user clicks on insight tab
+   $('.page-loader').fadeIn(0);
+   $('.page-loader').fadeOut(700);
+
+
+
+  
+   
+   var tabSpecieName = document.getElementById("species-name").innerHTML;
+      console.log("Insight Tab speciename: " + tabSpecieName);
+ 
+   
+
+      $(".insights-tab").tabs({
+        select: function(event, ui) {                   
+           window.location.hash(ui.tab.hash);
+        },
+      });
+        
+      
+      //send request with the name
+     const response = await fetch('/DiscoveryNews?' + new URLSearchParams({
+          name: tabSpecieName
+    }));
+
+
+ var myJson = await response.json(); //extract JSON from the http response
+  if (myJson != null || myJson != ''){
+        
+
+    
+   var counter = 0;
+    counter = Object.keys(myJson.result.results).length;
+
+        document.getElementById("resultLength").innerHTML = 'Total Number of Insights: ' + counter;
+   
+      var insightRecord = myJson.result.results;
+      console.log(insightRecord);
+      
+   
+   
+       appenData(insightRecord);
+
+    function appenData(data){   
+         var insightContainer = document.getElementById("insight-data");
+           for (let i = 0; i < counter; i++) {
+              var div = document.createElement("div");
+                  div.innerHTML =                 
+                      `  <div  class = "container insightrecordclass" style = "background:'white';" onmouseover="this.style.background='Aquamarine';" onmouseout="this.style.background='white';"  "border-style: groove !important;" "border-color: 'aquamarine' !important; border-width:thin !important;" >
+                             ${insightRecord[i].text} 
+                             </br>
+                              </br> 
+                                <strong>URL: </strong> <a style ="color: black !important;" href='${insightRecord[i].url}' target="_blank" rel="noopener noreferrer"> ${insightRecord[i].url}</a> 
+                           </div> 
+                           </br> 
+                           </br>
+                          
+                      `
+             insightContainer.appendChild(div);
+
+    };
+  }
+ 
+  } 
+
+}
+
+   
+
+/** Stop page display code  */
+
+
 $(document).ready(() => {
+
   //init the side nav bar
   $('.sidenav').sidenav();
 
@@ -339,6 +446,14 @@ $(document).ready(() => {
     $('.page-loader').fadeOut(1500);
   });
 
+  //click action on insight tab
+  $('#insightsBTN').click(function () {
+    // reloadTab();
+      document.getElementById("insight-data").innerHTML=null
+    specieInsight();
+     discoveryCall();
+    console.log('clicked insight');
+  });
   //call the user action function
   userAction();
 
