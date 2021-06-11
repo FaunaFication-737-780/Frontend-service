@@ -196,17 +196,7 @@ const userAction = async () => {
 
               
         
-        //reload the discoveryCall function when tab is clicked
 
-       $('#insightsBTN').click(function () {
-        $('#insight-data').replaceWith(
-       '<div class="preloader-wrapper big active" id="mapLoader"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div> </div></div>'
-        )
-          discoveryCall();
-       
-        });
-     
-      
      
 
         //remove all the click listener for the map tab
@@ -420,6 +410,7 @@ const discoveryCall = async () => {
                           
                       `
              insightContainer.appendChild(div);
+
     };
   }
  
@@ -451,6 +442,7 @@ $(document).ready(() => {
   //click action on insight tab
   $('#insightsBTN').click(function () {
     // reloadTab();
+      document.getElementById("insight-data").innerHTML=null
     specieInsight();
      discoveryCall();
     console.log('clicked insight');
