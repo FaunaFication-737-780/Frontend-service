@@ -41,5 +41,7 @@
   },
   "author": "IBM Corp",
   "license": "Apache-2.0",
-  "devDependencies": {}
+  "devDependencies": {
+    "ibm-watson": "^6.1.1"
+  }
 }

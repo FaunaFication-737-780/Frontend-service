@@ -20,6 +20,11 @@
             height: 500px;
             width: 800px;
         }
+
+
+    
+
+
     </style>
 
     <meta name="viewport" content="width = device-width, initial-scale = 1">
@@ -119,13 +124,13 @@
 
 
     <div class="row  center">
-        <div class="species-info-card">
+        <div class="species-info-card" id="divtab">
             <!-- Note that "m8 l9" was added -->
             <ul class="tabs" id="tabs">
                 <li class="tab col s3"><a class="active" href="#info-tab">Information</a></li>
                 <li class="tab col s3" id="mapBTN"><a href="#map-tab">Maps</a></li>
                 <li class="tab col s3 "><a href="#threats-tab">Threats</a></li>
-                <li class="tab col s3"><a href="#insights-tab">Insights</a></li>
+                <li class="tab col s3" id="insightsBTN"><a href="#insights-tab" id="specie-name" >Insights</a></li>
             </ul>
 
             <div id="info-tab" class="col s12 ">
@@ -200,9 +205,12 @@
                     </li>
                 </ul>
             </div>
-            <div id="insights-tab" class="col s12">Test 4</div>
-
-        </div>
+            <div id="insights-tab" class = "insightClass"  >
+                <h4 class="center subheader teal-text"> <span id="specie-insight"></span>  </h4>  
+                <h5 class="center subheader teal-text"><span id="resultLength"></span></h5>
+      
+                 <div id ="insight-data" class="insightdataclass container" />
+           </div>
 
     </div>
     </div>
